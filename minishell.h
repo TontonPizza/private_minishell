@@ -20,4 +20,9 @@
 #include <string.h>
 #include <stdio.h>
 
+int		g_stdout_copy;
+
+int 	execute_cmd_pipe(char ***cmds, int source);
+
+
 #endif //MINISHELL_MINISHELL_H

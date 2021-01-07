@@ -22,37 +22,59 @@ char		**get_env_as_words()
 void 		init_env_list(void)
 {
 	env_list = malloc(sizeof(t_env_var*));
-	env_list->name = ft_strdup("first");
-	env_list->value = ft_strdup("first");
+	env_list->name = ft_strdup("author");
+	env_list->value = ft_strdup("vo-nguye");
 	env_list->next = 0;
 }
 
 char 		*get_value(char *name)
 {
-	return (0);
+	t_env_var	*current;
+
+	current = env_list;
+	while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
+	{
+		current = current->next;
+	}
+	if (ft_strncmp(current->name, name, ft_strlen(name)) == 0)
+	{
+		return (ft_strdup(current->value));
+	}
+	return (ft_strdup(""));
 }
 
-void 		unset_env(char *value)
+void 		unset_env(char *name)
 {
+		t_env_var	*current;
 
+		current = env_list;
+		while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
+		{
+			current = current->next;
+		}
+		if (ft_strncmp(current->name, name, ft_strlen(name)) == 0)
+		{
+			free(current->value);
+			current->value = ft_strdup("");
+		}
 }
 
-void 		export_var(char *var, char *value)
+void 		export_var(char *name, char *value)
 {
 		t_env_var *current;
 		t_env_var *item;
 
 		current = env_list;
-		while (current->next && ft_strncmp(current->name, var, ft_strlen(var)) != 0)
+		while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
 		{
 			current = current->next;
 		}
-		if (current->next == 0 && ft_strncmp(current->name, var, ft_strlen(var)) != 0)
+		if (current->next == 0 && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
 		{
 			item = malloc(sizeof(t_env_var));
 			if (current == 0)
 				return ;
-			item->name = ft_strdup(var);
+			item->name = ft_strdup(name);
 			item->value = ft_strdup(value);
 			item->next = 0;
 			current->next = item;
@@ -91,11 +113,19 @@ int		main()
 	print_var();
 
 	export_var("salut", "copain");
-	printf("---\n");
+	printf("\n\n---\n\n");
 
 	print_var();
-	export_var("salut", "cosspain");
+	printf("\n\n---\n\n");
+	unset_env("salut");
 	print_var();
+	printf("\n\n---\n\n");
+	unset_env("salut");
+	print_var();
+	printf("\n\n---\n\n");
+	printf("-%s\n", get_value("author"));
+	printf("-%s\n", get_value("salut"));
+	printf("-%s\n", get_value("NTM"));
 
 	return (0);
 }

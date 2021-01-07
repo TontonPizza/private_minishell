@@ -12,16 +12,24 @@
 
 #include "../minishell.h"
 
-char		**get_env()
+char		**get_env_as_words()
 {
 	char	**env;
 
 	return (env);
 }
 
+void 		init_env_list(void)
+{
+	env_list = malloc(sizeof(t_env_var*));
+	env_list->name = ft_strdup("first");
+	env_list->value = ft_strdup("first");
+	env_list->next = 0;
+}
+
 char 		*get_value(char *name)
 {
-
+	return (0);
 }
 
 void 		unset_env(char *value)
@@ -31,5 +39,65 @@ void 		unset_env(char *value)
 
 void 		export_var(char *var, char *value)
 {
+		t_env_var *current;
+		t_env_var *item;
 
+		current = env_list;
+		while (current->next && ft_strncmp(current->name, var, ft_strlen(var)) != 0)
+		{
+			current = current->next;
+		}
+		if (current->next == 0 && ft_strncmp(current->name, var, ft_strlen(var)) != 0)
+		{
+			item = malloc(sizeof(t_env_var));
+			if (current == 0)
+				return ;
+			item->name = ft_strdup(var);
+			item->value = ft_strdup(value);
+			item->next = 0;
+			current->next = item;
+		}
+		else
+		{
+			free(current->value);
+			current->value = ft_strdup(value);
+		}
 }
+
+void 	print_var()
+{
+	t_env_var		*current;
+	int i;
+
+	i = 0;
+	current = env_list;
+	while (current)
+	{
+		if (ft_strlen(current->name) < 1)
+		{
+			current = current->next;
+			continue;
+		}
+		printf("%s=%s\n", current->name, current->value);
+		current = current->next;
+		i++;
+	}
+}
+
+int		main()
+{
+	init_env_list();
+
+	print_var();
+
+	export_var("salut", "copain");
+	printf("---\n");
+
+	print_var();
+	export_var("salut", "cosspain");
+	print_var();
+
+	return (0);
+}
+
+

@@ -66,7 +66,7 @@ void 	print_content(void *content)
 	printf("%s %d\n", token->token, token->type);
 }
 
-int main()
+int main___()
 {
 	t_token *first_token;
 	t_token *cursor;
@@ -83,6 +83,7 @@ int main()
 		print_content(cursor);
 		cursor = cursor->next;
 	}
+	return (0);
 }
 
 

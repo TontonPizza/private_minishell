@@ -45,10 +45,6 @@
 #include <stdio.h>
 #include <errno.h>
 
-int		g_stdout_copy;
-int 	g_stderr_copy;
-int 	g_lat_exit_value;
-
 typedef struct 	s_token
 {
 	char				*token;
@@ -56,6 +52,18 @@ typedef struct 	s_token
 	struct	s_token		*next;
 }				t_token;
 
+typedef struct 	s_env_var
+{
+	char				*name;
+	char 				*value;
+	struct s_env_var 	*next;
+}				t_env_var;
+
+int			g_stdout_copy;
+int 		g_stderr_copy;
+int 		g_lat_exit_value;
+
+t_env_var 	*env_list;
 
 int 		execute_cmd_pipe(char ***cmds, int source);
 char		**get_words(char *line);

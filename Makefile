@@ -6,6 +6,7 @@ SRCS	=	minishell.c \
 			./srcs/line_to_words.c \
 			./srcs/words_to_token.c \
 			./srcs/t_token_list_manipulation.c \
+			./srcs/env_manipulation.c \
         	./libft/libft.a \
 
 

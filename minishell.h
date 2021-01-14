@@ -77,5 +77,6 @@ void		token_add_back(t_token **list, t_token *item);
 
 // ENV MANIPULATION
 void 		destroy_env(void);
+char 		*get_value_and_free_or_not(char *name, int free_or_not);
 
 #endif //MINISHELL_MINISHELL_H

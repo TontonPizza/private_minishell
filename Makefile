@@ -8,6 +8,7 @@ SRCS	=	minishell.c \
 			./srcs/t_token_list_manipulation.c \
 			./srcs/env_manipulation.c \
 			./srcs/env_manipulation_2.c \
+			./srcs/parsing_token_list.c \
         	./libft/libft.a \
 
 

@@ -49,7 +49,7 @@ void 		init_env_list(void)
 	all_env_as_array = ft_split("yolo yolo", ' ');
 }
 
-char 		*get_value(char *name)
+char 		*get_value_and_free_or_not(char *name, int free_name)
 {
 	t_env_var	*current;
 
@@ -62,9 +62,13 @@ char 		*get_value(char *name)
 	if (ft_strncmp(current->name, name, ft_strlen(name)) == 0)
 	{
 		requested_env_var = ft_strdup(current->value);
+		if (free_name == 1)
+			free(name);
 		return (requested_env_var);
 	}
 	requested_env_var = ft_strdup("");
+	if (free_name == 1)
+		free(name);
 	return (requested_env_var);
 }
 
@@ -131,7 +135,7 @@ void 	print_var()
 	}
 }
 
-int		main()
+int		main__()
 {
 	init_env_list();
 	print_split(get_env_as_array());

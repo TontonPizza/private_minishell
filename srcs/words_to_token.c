@@ -66,7 +66,9 @@ void 	print_content(void *content)
 	printf("%s %d\n", token->token, token->type);
 }
 
-int main___()
+
+
+int mainee()
 {
 	t_token *first_token;
 	t_token *cursor;
@@ -74,7 +76,7 @@ int main___()
 
 	first_token = 0;
 	i = 0;
-	char **words = get_words("salut les copains ; ;");
+	char **words = get_words("salut \"e·\"  copains ; ;");
 	first_token = words_to_token_list_and_free_words(words);
 
 	cursor = first_token;

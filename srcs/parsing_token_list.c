@@ -12,63 +12,80 @@
 
 #include "../minishell.h"
 
-void 		expand_env_variable(char *word, char *result, int *cursor)
+char 		*expand_env_variable(char *current, char **result)
 {
-	// word[0] = $
-	if ()
-}
+	char		*tmp;
 
-void 		expand_simple_quote(char *word, char *result, int *cursor)
-{
-	int i;
-
-	i = 1;
-	while (word[i] && word[i] != '\'')
+	tmp = ft_strdup("");
+	current++;
+	if (*current == '?' && current++)
 	{
-		result = char_join_and_free(result, word[i]);
-		i++;
+		free(tmp);
+		tmp = ft_itoa(g_last_exit_value);
+		*result = ft_strjoin_and_free(*result, tmp);
+		free(tmp);
+		return (current);
 	}
-	if (word[i] == '\'')
-		i++;
-	*cursor += i;
+	if (*current == '{')
+		current++;
+	while (ft_isalpha(*current))
+		tmp = join_char_and_free(tmp, *current++);
+	while (ft_isdigit(*current))
+		tmp = join_char_and_free(tmp, *current++);
+	if (*current == '}')
+		current++;
+//	tmp = get_value_and_free_or_not(tmp, 1);
+	tmp = ft_strdup("__ENV__");
+	*result = ft_strjoin_and_free(*result, tmp);
+	free(tmp);
+	return (current);
 }
 
-void 		expand_double_quote(char *word, char *result, int *cursor)
+char 		*expand_double_quotes(char *current, char **result)
 {
-	int	i;
-
-	i = 1;
-	while (word[i] && word[i] != '"')
+	current++;
+	while (*current && *current != '"')
 	{
-		if (word[i] == '?')
-			expand_env_variable(word, result, cursor);
-		else
-			result = char_join_and_free(result, word[i]);
-		i++;
+		if (*current == '$')
+			current = expand_env_variable(current, result);
+		*result = join_char_and_free(*result, *current);
+		current++;
 	}
-	if (word[i] == '"')
-		i++;
-	*cursor += i;
+	if (*current == '"')
+		current++;
+	return (current);
 }
 
+char 		*expand_simple_quotes(char *current, char **result)
+{
+	current++;
+	while (*current && *current != '\'')
+	{
+		*result = join_char_and_free(*result, *current);
+		current++;
+	}
+	if (*current == '\'')
+		current++;
+	return (current);
+}
 
 char		*clear_word(char *word)
 {
-	char	*result;
-	int 	i;
+	char 	*result;
+	char 	*current;
 
-	i = 0;
+	current = word;
 	result = ft_strdup("");
-	while (word[i])
+	while (*current)
 	{
-		if (word[i] == '\'')
-			expand_simple_quote(word + i, result, &i);
-		else if (word[i] == '"')
-			expand_double_quote(word + i, result, &i);
-		else if (word[i] == '?')
-			expand_env_variable(word + i, result, &i);
-		else
-			result = join_char_and_free(result, word[i++]);
+		if (*current == '\'')
+			current = expand_simple_quotes(current, &result);
+		if (*current == '"')
+			current = expand_double_quotes(current, &result);
+		if (*current == '$')
+			current = expand_env_variable(current, &result);
+		result = join_char_and_free(result, *current);
+		current++;
 	}
 	return (result);
 }
@@ -76,9 +93,11 @@ char		*clear_word(char *word)
 int main(int argc, char **argv)
 {
 
-	int k;
+	char *word = "salut'l$xxes' c\"$pouet-op\"ains";
+	char *word_2 = clear_word(word);
 
-	return 0;
+	printf("%s %d\n", word_2, ft_strlen(word_2));
+	free(word_2);
 }
 
 

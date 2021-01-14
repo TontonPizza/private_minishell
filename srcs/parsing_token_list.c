@@ -34,8 +34,7 @@ char 		*expand_env_variable(char *current, char **result)
 		tmp = join_char_and_free(tmp, *current++);
 	if (*current == '}')
 		current++;
-//	tmp = get_value_and_free_or_not(tmp, 1);
-	tmp = ft_strdup("__ENV__");
+	tmp = get_value_and_free_or_not(tmp, 1);
 	*result = ft_strjoin_and_free(*result, tmp);
 	free(tmp);
 	return (current);
@@ -92,8 +91,8 @@ char		*clear_word(char *word)
 
 int main(int argc, char **argv)
 {
-
-	char *word = "salut'l$xxes' c\"$pouet-op\"ains";
+	init_env_list();
+	char *word = "salut'l$xxes' c\"$author-op\"ains";
 	char *word_2 = clear_word(word);
 
 	printf("%s %d\n", word_2, ft_strlen(word_2));

@@ -77,10 +77,14 @@ char		**get_words(char *line)
 	return (result);
 }
 
-int mainx()
+int main_ltw1()
 {
 	char **words = get_words("salut;pouet|p\"ut\"ain'c t r o p<'marrant      ;0");
+	char **w2 = get_words("a b c d e");
 
-	print_split(words);
+	char **meta = split_join_and_free_2(words, w2);
+
+	print_split(meta);
+	free_split(meta);
 	return (0);
 }

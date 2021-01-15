@@ -92,5 +92,6 @@ int					get_next_line(int fd, char **line);
 char				*char_join_and_free(char *str, char c);
 char				*ft_strjoin_and_free(char *t1, char *t2);
 char				*join_char_and_free(char *str, char c);
-
+char 				**split_join_and_free_2(char **a, char **b);
+char 				**split_join_string(char **split, char *word);
 #endif

@@ -37,7 +37,6 @@ int 	is_valid(char ***cmds) // exemple
 	// replace ENV check if file exist qnd is executable
 
 	return (0);
-
 }
 
 int 	exec_cmd(char ***cmd)

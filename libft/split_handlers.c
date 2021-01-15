@@ -71,3 +71,25 @@ int 	free_split(char **words)
 	free(words);
 	return (1);
 }
+
+char 	**split_join_and_free_2(char **a, char **b)
+{
+	char 	**result;
+	int 	i;
+	int 	k;
+
+	i = 0;
+	k = 0;
+	result = malloc(sizeof(char *) * ((split_size(a) + split_size(b) + 1)));
+	if (result == NULL)
+		return (NULL);
+	while (a && a[i])
+		result[k++] = ft_strdup(a[i++]);
+	i = 0;
+	while (b && b[i])
+		result[k++] = ft_strdup(b[i++]);
+	result[k] = 0;
+	free_split(a);
+	free_split(b);
+	return (result);
+}

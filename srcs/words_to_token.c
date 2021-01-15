@@ -68,7 +68,7 @@ void 	print_content(void *content)
 
 
 
-int mainee()
+int main_wtk()
 {
 	t_token *first_token;
 	t_token *cursor;
@@ -77,7 +77,13 @@ int mainee()
 	first_token = 0;
 	i = 0;
 	char **words = get_words("salut \"e·\"  copains ; ;");
+
+	// clean words up to ;
+
 	first_token = words_to_token_list_and_free_words(words);
+
+	// exec cmd up to ;
+
 
 	cursor = first_token;
 	while (cursor)

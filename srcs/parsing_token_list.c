@@ -68,7 +68,7 @@ char 		*expand_simple_quotes(char *current, char **result)
 	return (current);
 }
 
-char		*clear_word(char *word)
+char		*clean_word(char *word)
 {
 	char 	*result;
 	char 	*current;
@@ -89,14 +89,15 @@ char		*clear_word(char *word)
 	return (result);
 }
 
-int main(int argc, char **argv)
+int main_ptl(int argc, char **argv)
 {
 	init_env_list();
-	char *word = "salut'l$xxes' c\"$author-op\"ains";
-	char *word_2 = clear_word(word);
+	char *word = "salut'l$xxes' c\"$author-o$?p\"ains";
+	char *word_2 = clean_word(word);
 
 	printf("%s %d\n", word_2, ft_strlen(word_2));
 	free(word_2);
+	return 0;
 }
 
 

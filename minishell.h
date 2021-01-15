@@ -74,12 +74,16 @@ int 		env_var_count(void);
 
 // Token list
 void		token_add_back(t_token **list, t_token *item);
+int 		token_type(char *word);
 
 // ENV MANIPULATION
 void 		destroy_env(void);
 char 		*get_value_and_free_or_not(char *name, int free_or_not);
 void 		init_env_list();
 
+// Parsing cleaning
+char		*clean_word(char *word);
+char 		**clean_words_up_to_semicolon(char **words);
 
 
 #endif //MINISHELL_MINISHELL_H

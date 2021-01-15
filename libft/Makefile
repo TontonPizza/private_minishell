@@ -25,7 +25,7 @@ SRC = 	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c \
 	  	ft_strnstr.c ft_strrchr.c\
 	  	ft_strtrim.c ft_substr.c ft_tolower.c ft_toupper.c \
 	  	get_next_line.c special_malloc.c split_handlers.c string_handlers.c \
-	  	search_word_text.c \
+	  	search_word_text.c split_handlers_2.c \
 		ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstiter.c\
 		ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstmap.c
 

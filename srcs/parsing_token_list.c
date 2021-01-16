@@ -97,6 +97,7 @@ int main_ptl(int argc, char **argv)
 
 	printf("%s %d\n", word_2, ft_strlen(word_2));
 	free(word_2);
+	destroy_env();
 	return 0;
 }
 

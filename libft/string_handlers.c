@@ -18,11 +18,7 @@ char		*join_char_and_free(char *str, char c)
 	char	*result;
 
 	i = 0;
-	if (!(result = malloc(sizeof(char) * (ft_strlen(str) + 2))))
-	{
-		free(str);
-		return (NULL);
-	}
+	result = (char *)x_malloc(sizeof(char) * (ft_strlen(str) + 2));
 	while (str && str[i] != 0)
 	{
 		result[i] = str[i];

@@ -69,6 +69,7 @@ char 		**all_env_as_array;
 
 int 		execute_cmd_pipe(char ***cmds, int source);
 char		**get_words(char *line);
+char 		**get_words_and_free(char *line);
 int 		env_var_count(void);
 
 

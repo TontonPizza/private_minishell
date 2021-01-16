@@ -77,6 +77,15 @@ char		**get_words(char *line)
 	return (result);
 }
 
+char 	**get_words_and_free(char *line)
+{
+	char **result;
+
+	result = get_words(line);
+	free(line);
+	return (result);
+}
+
 int main_ltw1()
 {
 	char **words = get_words("salut;pouet|p\"ut\"ain'c t r o p<'marrant      ;0");

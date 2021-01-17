@@ -19,7 +19,7 @@ char 	**clean_words_up_to_semicolon(char **words)
 
 	i = 0;
 	result = 0;
-	while (token_type(words[i]) != TYPE_END)
+	while (words[i] && token_type(words[i]) != TYPE_END)
 		result = split_join_and_free_2
 				(result, get_words_and_free(clean_word(words[i++])));
 	while (words[i])
@@ -32,7 +32,9 @@ int main()
 {
 
 	init_env_list();
-	char *line = ft_strdup("sal  copa$author*ins pouet ;");
+
+	char *line;
+	get_next_line(0, &line);
 	char **words = get_words(line);
 	char **clean_words = clean_words_up_to_semicolon(words);
 

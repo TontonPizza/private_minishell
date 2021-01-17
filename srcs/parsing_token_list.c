@@ -46,7 +46,12 @@ char 		*expand_double_quotes(char *current, char **result)
 	while (*current && *current != '"')
 	{
 		if (*current == '$')
+		{
 			current = expand_env_variable(current, result);
+			continue;
+		}
+		if (*current == '\\' && is_char_in_set(*current, "\"\'\\$"))
+			current++;
 		*result = join_char_and_free(*result, *current);
 		current++;
 	}

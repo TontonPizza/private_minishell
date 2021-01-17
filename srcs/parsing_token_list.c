@@ -84,25 +84,33 @@ char		*clean_word(char *word)
 	{
 		if (*current == '\'')
 			current = expand_simple_quotes(current, &result);
-		if (*current == '"')
+		else if (*current == '"')
 			current = expand_double_quotes(current, &result);
-		if (*current == '$')
+		else if (*current == '$')
 			current = expand_env_variable(current, &result);
-		result = join_char_and_free(result, *current);
-		current++;
+		else
+		{
+			result = join_char_and_free(result, *current);
+			current++;
+		}
 	}
 	return (result);
 }
+//salut-$author"les\$author"copains
+//salut-$author"lesauthor"copains
 
-int main_ptl(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	init_env_list();
-	char *word = "salut'l$xxes' c\"$author-o$?p\"ains";
-	char *word_2 = clean_word(word);
 
-	printf("%s %d\n", word_2, ft_strlen(word_2));
-	free(word_2);
-	destroy_env();
+	init_env_list();
+
+	char *line;
+	get_next_line(0, &line);
+
+	char *words = clean_word(line);
+	printf("%s\n", words);
+
+	free(line);
 	return 0;
 }
 

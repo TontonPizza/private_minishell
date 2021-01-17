@@ -28,17 +28,7 @@ char 	**clean_words_up_to_semicolon(char **words)
 	return (result);
 }
 
-int main()
+int main_ltw2()
 {
-
-	init_env_list();
-
-	char *line;
-	get_next_line(0, &line);
-
-	char *words = clean_word(line);
-	printf("%s\n", words);
-
-	free(line);
 	return 0;
 }

@@ -99,18 +99,8 @@ char		*clean_word(char *word)
 //salut-$author"les\$author"copains
 //salut-$author"lesauthor"copains
 
-int main(int argc, char **argv)
+int main_ptl(int argc, char **argv)
 {
-
-	init_env_list();
-
-	char *line;
-	get_next_line(0, &line);
-
-	char *words = clean_word(line);
-	printf("%s\n", words);
-
-	free(line);
 	return 0;
 }
 

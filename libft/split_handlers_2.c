@@ -31,3 +31,20 @@ char 	**split_join_string(char **split, char *word)
 	free_split(split);
 	return (result);
 }
+
+char 	**copy_split(char **split)
+{
+	char 	**result;
+	int 	i;
+
+	result = malloc(sizeof (char *) * (split_size(split) + 2));
+	if (result == 0)
+		return (0);
+	while (split && split[i])
+	{
+		result[i] = ft_strdup(split[i]);
+		i++;
+	}
+	result[i] = 0;
+	return (result);
+}

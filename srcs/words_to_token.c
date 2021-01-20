@@ -30,6 +30,29 @@ int 		token_type(char *word)
 	return (TYPE_WORD);
 }
 
+char 		**words_after_semicolon(char **words)
+{
+	char	**result;
+	int 	i;
+	int 	k;
+
+	result = x_malloc(sizeof(char *) * (split_size(words) + 2));
+	i = 0;
+	k = 0;
+	while (words[i] && token_type(words[i]) !=  TYPE_END)
+	{
+		i++;
+	}
+	if (words[i])
+		i++;
+	while (words[i])
+	{
+		result[k++] = words[i++];
+	}
+	result[k] = 0;
+	return (result);
+}
+
 t_token		*word_to_token(char *word)
 {
 	t_token	*token;

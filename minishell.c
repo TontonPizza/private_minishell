@@ -39,11 +39,13 @@ int main()
 {
 	init_env_list();
 
-	int i = 0;
-	char *word = "$author_y_x";
+	export_var("pouet", "castor");
 
-	char *result = expand_env_variable(word, &i);
-	printf("%s, %d, %c\n", result, i, word[i]);
+	int i = 0;
+	char *word = "$author $? \\$author \\$? $pouet";
+
+	char *result = expand_backslash_and_parameters(word);
+	printf("%s\n", result);
 
 
 }

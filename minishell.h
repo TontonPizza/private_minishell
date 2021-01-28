@@ -92,6 +92,7 @@ void		destroy_token_list(t_token *item);
 // EXPANDER
 char 		*expand_env_variable(char *word, int *cursor);
 char 		*expand_word(char *word);
+char		*expand_backslash_and_parameters(char *word);
 /***********************************/
 /***********************************/
 

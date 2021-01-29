@@ -14,30 +14,36 @@
 
 char	*next_split(char *word, char **result)
 {
-	int i;
+	int		i;
+	char	c;
 
+	printf("called\n");
 	i = 0;
 	while (word[i] == ' ')
 		i++;
 	(*result) = ft_strdup(word + i);
-	/*
-	 *  ajouter le traitement des guillemets
-	 *
-	 *
-	 *
-	 */
-
 	while (word[i] && word[i] != ' ')
-		i++;
+	{
+		if (word[i] == DOUBLE_QUOTE || word[i] == SIMPLE_QUOTE)
+		{
+			c = word[i++];
+			while (word[i] && word[i] != c)
+				i++;
+			if (word[i])
+				i++;
+		}
+		while (word[i] && word[i]
+			!= DOUBLE_QUOTE && word[i] != SIMPLE_QUOTE && word[i] != ' ')
+			i++;
+	}
 	(*result)[i] = 0;
 	return (word + i);
 }
 
-
 char 	**word_split(char *word)
 {
-	char 	**result;
-	int 	i;
+	char	**result;
+	int		i;
 
 	i = 0;
 	result = x_malloc(sizeof(char *) * ft_strlen(word));

@@ -48,3 +48,26 @@ char 	**copy_split(char **split)
 	result[i] = 0;
 	return (result);
 }
+
+char 	**offset_word(char **words, int offset)
+{
+	char	**result;
+	int		i;
+	int 	k;
+
+	if (offset > split_size(words))
+		return (0);
+	result = x_malloc(sizeof (char *) * split_size(words));
+	i = 0;
+	k = 0;
+	while (i < offset)
+		i++;
+	while (words[i + k])
+	{
+		result[k] = ft_strdup(words[i + k]);
+		k++;
+	}
+	result[k] = 0;
+	free_split(words);
+	return (result);
+}

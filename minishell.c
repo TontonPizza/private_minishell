@@ -35,32 +35,15 @@ void test_token()
 
 }
 
-
-char 	*offset_word(char **word)
-{
-	char *result;
-
-	(*word) += 3;
-	result = ft_strdup(*word);
-	return (result);
-}
-
 int main()
 {
-	init_env_list();
+	char **words = ft_split("salut les copains comment ça va", ' ');
 
-	char *line;
+	print_split(words);
+	printf("%d---\n", split_size(words));
 
-	get_next_line(1, &line);
-
-	line = expand_backslash_and_parameters(line);
-
-	char **words = word_split(line);
-	int i = 0;
-	while (words[i])
-	{
-		printf("%s\n", remove_quote(words[i]));
-		i++;
-	}
-
+	words = offset_word(words, 3);
+	printf("%d---\n", split_size(words));
+	print_split(words);
+	free_split(words);
 }

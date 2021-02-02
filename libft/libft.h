@@ -95,6 +95,7 @@ char				*join_char_and_free(char *str, char c);
 char 				**split_join_and_free_2(char **a, char **b);
 char 				**split_join_string(char **split, char *word);
 char 				**copy_split(char **split);
+char 				**offset_word(char **words, int offset);
 void 				*x_malloc(int size);
 
 #endif

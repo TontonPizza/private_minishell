@@ -42,7 +42,7 @@ int main()
 	print_split(words);
 	printf("%d---\n", split_size(words));
 
-	words = offset_word(words, 3);
+	words_to_tokens_and_offset_words(&words);
 	printf("%d---\n", split_size(words));
 	print_split(words);
 	free_split(words);

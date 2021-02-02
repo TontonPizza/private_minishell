@@ -105,6 +105,11 @@ char		*expand_backslash_and_parameters(char *word);
 int 		next_cut(char *word);
 char 		**word_split(char *word);
 char 		*remove_quote(char *word);
+
+// TOKENIZER
+t_token		*words_to_tokens_and_offset_words(char ***words);
+
+
 /***********************************/
 /***********************************/
 

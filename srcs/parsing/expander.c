@@ -102,16 +102,20 @@ char 	*remove_quote(char *word)
 	return (result);
 }
 
-char	**expand_word(char *word) {
-	char **result;
-	int i;
+char	**expand_word(char *word)
+{
+	char	**result;
+	char	*temp;
+	int		i;
 
 	i = 0;
 	word = expand_backslash_and_parameters(word);
 	result = word_split(word);
 	free(word);
 	while (result[i]) {
+		temp = result[i];
 		result[i] = remove_quote(result[i]);
+		free(temp);
 		i++;
 	}
 	return (result);

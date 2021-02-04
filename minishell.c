@@ -39,13 +39,10 @@ void		add_words_to_token_list(t_token **list, char **words);
 
 int main()
 {
-
 	t_token *list = 0;
-	char	*line;
 	char	**words;
 
-	get_next_line(1, &line);
-	words = get_words_and_free(line);
+	words = get_words("hello hello");
 
 	words_to_tokens_and_offset_words(&words, &list);
 

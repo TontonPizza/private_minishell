@@ -64,7 +64,7 @@ char		**get_words(char *line)
 	int		cursor;
 	int		word_count;
 
-	result = x_malloc(sizeof(char *) * (ft_strlen(line) + 1));
+	result = x_malloc(sizeof(char *) * (ft_strlen(line) + 2));
 	result[0] = 0;
 	cursor = 0;
 	word_count = 0;
@@ -73,7 +73,8 @@ char		**get_words(char *line)
 		result[word_count] = get_next_word(line + cursor, &cursor, 0);
 		word_count++;
 	}
-	result[word_count] = (NULL);
+	result[word_count] = ft_strdup(";"); // DANGER
+	result[word_count + 1] = (NULL);
 	return (result);
 }
 

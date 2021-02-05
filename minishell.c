@@ -37,24 +37,33 @@ void test_token()
 
 void		add_words_to_token_list(t_token **list, char **words);
 
+void 		do_sth_while_words(char **words)
+{
+	t_token *list = 0;
+	t_token *cursor;
+
+	while (words[0])
+	{
+		words_to_tokens_and_offset_words(&words, &list);
+		cursor = list;
+		while (cursor)
+		{
+			printf("%s%d\n", cursor->token, cursor->type);
+			cursor = cursor->next;
+		}
+		printf("--\n");
+		destroy_token_list(list);
+		list = 0;
+	}
+	free_split(words);
+}
+
 int main()
 {
 	t_token *list = 0;
 	char	**words;
 
-	words = get_words("hello hello");
+	words = get_words("hello hello ; pouet pouet ; x x x;");
 
-	words_to_tokens_and_offset_words(&words, &list);
-
-	t_token *cursor = list;
-	while (cursor)
-	{
-		printf("%s %d\n", cursor->token, cursor->type);
-		cursor = cursor->next;
-	}
-
-	printf("[[[[-----]]]]\n");
-	print_split(words);
-	free_split(words);
-	destroy_token_list(list);
+	do_sth_while_words(words);
 }

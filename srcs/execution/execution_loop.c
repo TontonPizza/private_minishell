@@ -12,13 +12,37 @@
 
 #include "../../minishell.h"
 
+/*
+ *
+ * check conformity checks if after an operator > < >> there is a word
+ *
+ */
+
+int		check_conformity(t_token *list)
+{
+	t_token	*cursor = list;
+	int 	type;
+
+	while(cursor)
+	{
+		type = cursor->type;
+		if (type == TYPE_IN || type == TYPE_OUT || type == TYPE_APPEND)
+		{
+			if (cursor->next == 0 || cursor->next->type != TYPE_WORD)
+				return (CODE_SYNTAX_ERROR);
+		}
+		cursor = cursor->next;
+	}
+	return (CODE_OK);
+}
+
 int 	execution_loop(t_token *list)
 {
 	t_token	*cursor = list;
 	char 	**command;
 
 	if (cursor == 0)
-		return;
+		return -1;
 	/*
 	 *  parcourir curssor, vérifier la conformité, gérer les redirections
 	 *  mettre tous les mots libre dans un char **command
@@ -35,5 +59,5 @@ int 	execution_loop(t_token *list)
 	 *  executer le merdier
 	 */
 
-	execution_loop(cursor);
+	return (execution_loop(cursor));
 }

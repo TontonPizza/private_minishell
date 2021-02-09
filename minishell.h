@@ -34,6 +34,12 @@
 #  define DOUBLE_QUOTE 126
 # endif
 
+enum e_error_type
+{
+	CODE_OK,
+	CODE_NO_SUCH_FILE_OR_DIRECTORY,
+	CODE_SYNTAX_ERROR
+};
 
 enum e_token_type_code
 {
@@ -110,6 +116,10 @@ char 		*remove_quote(char *word);
 void		words_to_tokens_and_offset_words(char ***words, t_token **list);
 void		add_words_to_token_list(t_token **list, char **words);
 
+
+// EXECUTION LOOP
+
+int			check_conformity(t_token *list);
 
 /***********************************/
 /***********************************/

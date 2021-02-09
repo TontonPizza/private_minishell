@@ -35,10 +35,10 @@ void 		do_sth_while_words(char **words)
 		/*
 		 *
 		 */
-
+		printf("conformity : %d\n", check_conformity(cursor));
 		while (cursor)
 		{
-			printf("%s%d\n", cursor->token, cursor->type);
+			printf("%s %d ", cursor->token, cursor->type);
 			cursor = cursor->next;
 		}
 		printf("--\n");
@@ -53,7 +53,7 @@ int main()
 	t_token *list = 0;
 	char	**words;
 
-	words = get_words("hello hello | pouet pouet ; x x x;");
+	words = get_words("hello  >>  <hello | pouet pouet ; x x x;");
 
 	do_sth_while_words(words);
 }

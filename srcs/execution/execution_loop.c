@@ -39,14 +39,14 @@ int		check_conformity(t_token *list)
 	return (CODE_OK);
 }
 
-char 	**export_token_to_command(t_token *list)
+char 	**export_token_to_command(t_token *list) // prends la liste et extrait la premiere chaine de commande avant le |
 {
 	char	**words;
 	int 	i;
 	int 	k;
 
 	i = 0;
-	words = x_malloc(sizeof(char *) * token_list_size(list));
+	words = x_malloc((int)sizeof(char *) * token_list_size(list));
 	while (list && list->type != TYPE_PIPE)
 	{
 		k = list->type;
@@ -62,6 +62,11 @@ char 	**export_token_to_command(t_token *list)
 	return (words);
 }
 
+int 	search_executable(char *command_name)
+{
+	return 0;
+}
+
 int 	execution_loop(t_token *list)
 {
 	t_token	*cursor = list;
@@ -71,16 +76,22 @@ int 	execution_loop(t_token *list)
 		return -1;
 	command = export_token_to_command(list);
 	/*
-	 *  parcourir curssor, vérifier la conformité, gérer les redirections
-	 *  mettre tous les mots libre dans un char **command
+	 * fait =>  parcourir curssor, vérifier la conformité, gérer les redirections
+	 * fait =>  mettre tous les mots libre dans un char **command
 	 *
 	 * pousser la list jusqu'apres le premier | si il ya
 	 */
 
 	/*
+ 	* ouvrir les fds qu'il faut si les files existent
+ 	*/
+
+	/*
 	 *  chercher l'executable si /
-	 *  sinon chercher si builtin
+	 *  sinon chercher si builtin et path
 	 */
+
+
 
 	/*
 	 *  executer le merdier

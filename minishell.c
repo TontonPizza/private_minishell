@@ -48,7 +48,7 @@ int main()
 	t_token *list = 0;
 	char	**words;
 
-	words = get_words("echo toto pouet < file >> file < file > file");
+	words = get_words("echo toto < pouet caca < file >> file < file > file");
 
 	do_sth_while_words(words);
 }

@@ -43,6 +43,12 @@ enum e_error_type
 
 };
 
+enum e_bool_type
+{
+	FALSE,
+	TRUE,
+};
+
 enum e_token_type_code
 {
 	TYPE_WORD,
@@ -82,6 +88,8 @@ typedef struct s_env_data
 }					t_env_data;
 
 int         g_new_stderr;
+int 		g_new_stdin;
+int			g_new_stdout;
 
 // ENV MANIPULATION
 void		init_env_list(void);
@@ -135,6 +143,7 @@ int		initialize_path_to_buffer(void);
 char	*path_to_buffer(int op);
 int		clear_error_buffer(void);
 char	*get_buffer_content(void);
+int		is_there_an_error(void);
 
 
 // BUILD INS

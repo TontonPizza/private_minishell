@@ -79,6 +79,20 @@ char	*path_to_buffer(int op)
 //	return stderr_fd;
 //}
 
+int	is_there_an_error(void)
+{
+	char 	*str;
+
+	str = get_buffer_content();
+	if (str == 0)
+	{
+		free(str);
+		return (FALSE);
+	}
+	free(str);
+	return (TRUE);
+}
+
 int initialize_path_to_buffer(void)
 {
 	int fd;

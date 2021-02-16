@@ -62,9 +62,21 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 	return (words);
 }
 
-int 	search_executable(char *command_name)
+int		exec_pipe(char **cmd)
 {
-	return 0;
+	pid_t	pid;
+
+	pid = fork();
+	if (pid == -1 || is_there_an_error() == TRUE) // détacher les erreurs ?
+		return (-1);
+	if (pid == CHILD_PROCESS)
+	{
+		execve(cmd[0], cmd, get_env_as_array());
+		ft_putendl_fd("command not found\n", g_new_stdout);
+		exit(0);
+	}
+
+	return (0);
 }
 
 int 	execution_loop(t_token *list)
@@ -75,6 +87,12 @@ int 	execution_loop(t_token *list)
 	if (cursor == 0 || check_conformity(list) != 0)
 		return -1;
 	command = export_token_to_command(list);
+	while (cursor && cursor->type != TYPE_PIPE) //pousser la list jusqu'apres le premier | si il ya
+		cursor = cursor->next;
+	if (cursor == 0) // si c'est la derniere commande pipée
+	{
+		// Modifier la DEST stdin;
+	}
 
 	/*
  	* ouvrir les fds qu'il faut si les files existent
@@ -83,8 +101,7 @@ int 	execution_loop(t_token *list)
 	/*
 	 *  executer le merdier => c'est ici qu'on cherche l'executable
 	 */
+	exec_pipe(command);
 
-	while (cursor && cursor->type != TYPE_PIPE) //pousser la list jusqu'apres le premier | si il ya
-		cursor = cursor->next;
 	return (execution_loop(cursor->next));
 }

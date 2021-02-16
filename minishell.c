@@ -48,14 +48,14 @@ int main(int argc, char **argv)
 	initialize_path_to_buffer();
 
 	pid_t pid;
-	char *cmds[] = {"/bin/echo", "pouet", 0};
+	char *cmds[] = {"/usr/bin/docker", "pouet", 0};
 
 
 	pid = fork();
 	if (pid == 0)
 	{
 		execve(cmds[0], cmds, 0);
-		write(STDERR_FILENO, "error 0", 7);
+		write(STDERR_FILENO, "invalid command", ft_strlen("invalid command"));
 		exit(0);
 	}
 	else

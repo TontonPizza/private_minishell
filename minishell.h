@@ -91,6 +91,8 @@ int         g_new_stderr;
 int 		g_new_stdin;
 int			g_new_stdout;
 
+int 		debug_loop;
+
 // ENV MANIPULATION
 void		init_env_list(void);
 void		destroy_env(void);
@@ -135,8 +137,10 @@ void		add_words_to_token_list(t_token **list, char **words);
 
 int			check_conformity(t_token *list);
 char 		**export_token_to_command(t_token *list);
+int 		execution_loop(t_token *list, int source);
 
-
+int 		source_fd(int source, t_token *list);
+int 		dest_fd(int pipe_fd, t_token *list);
 // ERROR BUFFER
 int		initialize_path_to_buffer(void);
 //int		g_new_stderr(int op, int value);

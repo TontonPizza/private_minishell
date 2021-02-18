@@ -62,46 +62,47 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 	return (words);
 }
 
-int		exec_pipe(char **cmd)
+int		exec_pipe(char **cmd, int source)
 {
-	pid_t	pid;
-
-	pid = fork();
-	if (pid == -1 || is_there_an_error() == TRUE) // détacher les erreurs ?
-		return (-1);
-	if (pid == CHILD_PROCESS)
-	{
-		execve(cmd[0], cmd, get_env_as_array());
-		ft_putendl_fd("command not found\n", g_new_stdout);
-		exit(0);
-	}
-
 	return (0);
 }
 
-int 	execution_loop(t_token *list)
+t_token	*next_command_after_pipe(t_token *list)
 {
-	t_token	*cursor = list;
-	char 	**command;
-
-	if (cursor == 0 || check_conformity(list) != 0)
-		return -1;
-	command = export_token_to_command(list);
-	while (cursor && cursor->type != TYPE_PIPE) //pousser la list jusqu'apres le premier | si il ya
-		cursor = cursor->next;
-	if (cursor == 0) // si c'est la derniere commande pipée
+	while (list && list->type != TYPE_PIPE)
 	{
-		// Modifier la DEST stdin;
+		list = list->next;
 	}
+	if (list && list->type == TYPE_PIPE)
+		list = list->next;
+	return list;
+}
 
-	/*
- 	* ouvrir les fds qu'il faut si les files existent
- 	*/
+int		get_real_source(t_token *list, int source)
+{
+	return 0;
+}
 
-	/*
-	 *  executer le merdier => c'est ici qu'on cherche l'executable
-	 */
-	exec_pipe(command);
+int 	get_real_dest(t_token *list, int dest)
+{
+	return 0;
+}
 
-	return (execution_loop(cursor->next));
+int 	execution_loop(t_token *list, int source)
+{
+	int		pipe_fd[2];
+
+	if (pipe(pipe_fd) < 0)
+		return (-1);
+	if (list == 0 && close(source) == 0)
+		return (0);
+	// get the real source (source or < input file) : dup2(real_source, 0)
+	dup2(get_real_source(list, source), 0);
+	// get the real dest : dup2(pipe_fd[1], fd)
+	dup2(get_real_dest(list, pipe_fd[1]), 1);
+
+
+	// exec_pipe()
+
+	execution_loop(next_command_after_pipe(list), pipe_fd[0]);
 }

@@ -79,6 +79,12 @@ char	*path_to_buffer(int op)
 //	return stderr_fd;
 //}
 
+void generate_error(char *message)
+{
+	clear_error_buffer();
+	ft_putendl_fd(message, g_new_stderr);
+}
+
 int	is_there_an_error(void)
 {
 	char 	*str;

@@ -80,12 +80,51 @@ t_token	*next_command_after_pipe(t_token *list)
 
 int		get_real_source(t_token *list, int source)
 {
-	return 0;
+	int 	result;
+
+	result = source;
+	while (list && list->type != TYPE_PIPE)
+	{
+		if (list->type == TYPE_IN)
+		{
+			close(result);
+			list = list->next;
+			result = open(list->token, O_RDONLY);
+			if (result < 0)
+			{
+				generate_error("Error : can't open file");
+				return (result);
+			}
+		}
+		list = list->next;
+	}
+	return result;
 }
 
 int 	get_real_dest(t_token *list, int dest)
 {
-	return 0;
+	int 	result;
+
+	result = dest;
+	while (list && list->type != TYPE_PIPE)
+	{
+		if (list->type ==  TYPE_OUT)
+		{
+			close(result);
+			result = open(list->next->token, O_WRONLY | O_CREAT, 0777);
+			if (result < 0)
+				generate_error("Can't open file");
+		}
+		if (list->type == TYPE_APPEND)
+		{
+			close(result);
+			result = open(list->next->token, O_WRONLY | O_APPEND, 0777);
+			if (result < 0)
+				generate_error("Can't open file");
+		}
+		list = list->next;
+	}
+	return result;
 }
 
 int 	execution_loop(t_token *list, int source)
@@ -102,7 +141,7 @@ int 	execution_loop(t_token *list, int source)
 	dup2(get_real_dest(list, pipe_fd[1]), 1);
 
 
-	// exec_pipe()
+	// exec_pipe() if not error
 
-	execution_loop(next_command_after_pipe(list), pipe_fd[0]);
+	return execution_loop(next_command_after_pipe(list), pipe_fd[0]);
 }

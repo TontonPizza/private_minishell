@@ -27,15 +27,11 @@ int main(int argc, char **argv)
 	initialize_path_to_buffer();
 	init_env_list();
 
-	debug_loop = 0;
+	int fd = open(argv[1], O_CREAT | O_RDWR, 0777);
 
-	t_token *list = 0;
-	char *line = "echo 1 < minishell.c | echo 2 | echo 3 | ";
-	char **words = get_words(line);
+	printf("fd = %d\n", fd);
 
-	words_to_tokens_and_offset_words(&words, &list);
-
-	test_thing(list);
+	write(fd, "ssxx", 3);
 
 //	clear_error_buffer();
 }

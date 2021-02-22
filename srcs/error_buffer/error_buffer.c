@@ -12,6 +12,14 @@
 
 #include "../../minishell.h"
 
+void 	display_error()
+{
+	char *error_msg = get_buffer_content();
+	if (error_msg == 0)
+		return ;
+	ft_putendl_fd(error_msg, g_new_stdout);
+}
+
 int		clear_error_buffer(void)
 {
 	int fd;

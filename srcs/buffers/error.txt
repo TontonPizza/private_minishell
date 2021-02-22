@@ -1,2 +1,0 @@
-Error : can't open file
-Can't open file

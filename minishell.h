@@ -145,6 +145,7 @@ int 		dest_fd(int pipe_fd, t_token *list);
 // ERROR BUFFER
 int		initialize_path_to_buffer(void);
 void 	generate_error(char *message);
+void 	display_error();
 //int		g_new_stderr(int op, int value);
 char	*path_to_buffer(int op);
 int		clear_error_buffer(void);

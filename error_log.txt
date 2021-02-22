@@ -1,7 +1,22 @@
 enter execution loop
-get source from : pouet
-set dest to : toto
-error found, not pipe executed
+real source = -1
+real dest = 7
+command to execute : /bin/cat
 enter execution loop
-error found, not pipe executed
+real source = 6
+real dest = 8
+command to execute : /bin/grep
 enter execution loop
+real source = 7
+rétablissement du stdout grep
+command to execute : grep
+enter execution loop
+exit
+fini
+exit
+fini
+du stdout /usr/bin/docker
+command to execute : /usr/bin/docker
+enter execution loop
+exit
+fini

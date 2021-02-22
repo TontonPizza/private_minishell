@@ -33,9 +33,16 @@ int main(int argc, char **argv)
 {
 	initialize_path_to_buffer();
 	init_env_list();
+
+	export_var("PATH", "/bin");
+
+	g_new_stdout = dup(1);
+
 	log_file = open("error_log.txt", O_RDWR | O_CREAT, 0777);
 
-	char *line = ft_strdup("/bin/cat Makefile < pouet >> toto | grep = ");
+
+
+	char *line = ft_strdup("/bin/cat Makefile | /bin/grep = | grep SRCS ");
 	char **words = get_words_and_free(line);
 
 	t_token *list;
@@ -43,6 +50,10 @@ int main(int argc, char **argv)
 	words_to_tokens_and_offset_words(&words, &list);
 
 	execution_loop(list, -1);
+	g_new_stdout = dup(1);
+	display_error();
+
+	log_error("fini", "");
 
 //	log_error(get_buffer_content(), "");
 

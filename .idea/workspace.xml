@@ -17,12 +17,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/error_log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/error_log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pouet.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/buffers/error.txt" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/buffers/error.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/error_buffer/error_buffer.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/error_buffer/error_buffer.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/execution/execution_loop.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/execution_loop.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +108,7 @@
       <workItem from="1613067108048" duration="5453000" />
       <workItem from="1613456983811" duration="368000" />
       <workItem from="1613457377137" duration="410000" />
-      <workItem from="1613457827807" duration="15399000" />
+      <workItem from="1613457827807" duration="18257000" />
     </task>
     <servers />
   </component>

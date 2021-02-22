@@ -65,6 +65,24 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 int		exec_pipe(char **cmd)
 {
 	log_error("command to execute : ", cmd[0]);
+	pid_t pid;
+
+	pid = fork();
+	if (pid < 0)
+	{
+		log_error("fork error", "");
+		return (0);
+	}
+	if (pid == CHILD_PROCESS)
+	{
+		if (ft_strchr(cmd[0], '/') == 0)
+		{
+			cmd[0] = path_to_binary(cmd[0]);
+		}
+		execve(cmd[0], cmd, get_env_as_array());
+		exit(0);
+	}
+	waitpid(0, 0, 0);
 	return (0);
 }
 
@@ -100,6 +118,7 @@ int		get_real_source(t_token *list, int source)
 		}
 		list = list->next;
 	}
+	log_error("real source = ", ft_itoa(result));
 	return result;
 }
 
@@ -128,6 +147,7 @@ int 	get_real_dest(t_token *list, int dest)
 		}
 		list = list->next;
 	}
+	log_error("real dest = ", ft_itoa(result));
 	return result;
 }
 
@@ -135,21 +155,27 @@ int 	execution_loop(t_token *list, int source)
 {
 	log_error("enter execution loop", "");
 	int		pipe_fd[2];
-	char 	**command;
 
+	if (list == 0 && close(source) == 0)
+	{
+		log_error("exit", "");
+		return (0);
+	}
 	if (pipe(pipe_fd) < 0)
 		return (-1);
-	if (list == 0 && close(source) == 0)
-		return (0);
-	if (next_command_after_pipe(list) == 0)
-		dup2(g_new_stdout, 1);
 	dup2(get_real_source(list, source), 0);
-	dup2(get_real_dest(list, pipe_fd[1]), 1);
-
+	if (next_command_after_pipe(list) == 0)
+	{
+		log_error("rétablissement du stdout ", list->token);
+		dup2(g_new_stdout, 1);
+		close(g_new_stdout);
+	}
+	else
+		dup2(get_real_dest(list, pipe_fd[1]), 1);
 	if (is_there_an_error() == FALSE)
 		exec_pipe(export_token_to_command(list));
 	else
 		log_error("error found, not pipe executed", "");
-
+	close(pipe_fd[1]);
 	return execution_loop(next_command_after_pipe(list), pipe_fd[0]);
 }

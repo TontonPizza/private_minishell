@@ -81,6 +81,12 @@ int		exec_pipe(char **cmd)
 	{
 		if (ft_strchr(cmd[0], '/') == 0)
 			cmd[0] = path_to_binary(cmd[0]);
+		/*
+		 *
+		 *  if cmd[0] is not an executable file
+		 *  generate_error(binary not found)
+		 *
+		 */
 		execve(cmd[0], cmd, get_env_as_array());
 		free_split(cmd);
 		exit(0);

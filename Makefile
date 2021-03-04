@@ -15,6 +15,8 @@ SRCS	=	minishell.c \
 			./srcs/error_buffer/error_buffer.c \
 			./srcs/builtins/path_to_binary.c \
 			./srcs/execution/fd_manipulation.c \
+			./srcs/execution/exec_binary.c \
+			./srcs/execution/builtin_1.c \
         	./libft/libft.a \
 
 

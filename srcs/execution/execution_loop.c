@@ -70,31 +70,6 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 	return (words);
 }
 
-int		exec_pipe(char **cmd)
-{
-	pid_t pid;
-
-	pid = fork();
-	if (pid < 0)
-		return (0);
-	if (pid == CHILD_PROCESS)
-	{
-		if (ft_strchr(cmd[0], '/') == 0)
-			cmd[0] = path_to_binary(cmd[0]);
-		/*
-		 *
-		 *  if cmd[0] is not an executable file
-		 *  generate_error(binary not found)
-		 *
-		 */
-		execve(cmd[0], cmd, get_env_as_array());
-		free_split(cmd);
-		exit(0);
-	}
-	waitpid(0, 0, 0);
-	free_split(cmd);
-	return (0);
-}
 
 t_token	*next_command_after_pipe(t_token *list)
 {
@@ -173,7 +148,7 @@ int 	execution_loop(t_token *list, int source)
 	else
 		dup2(get_real_dest(list, pipe_fd[1]), 1);
 	if (is_there_an_error() == FALSE)
-		exec_pipe(export_token_to_command(list));
+		search_binary_or_builtin_and_exec(export_token_to_command(list));
 	else
 	{
 		display_error();

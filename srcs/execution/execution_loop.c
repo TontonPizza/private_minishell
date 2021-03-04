@@ -22,15 +22,23 @@ int		check_conformity(t_token *list)
 {
 	t_token	*cursor = list;
 	int 	type;
+	char 	*msg;
 
 	while(cursor)
 	{
 		type = cursor->type;
-		if (type == TYPE_IN || type == TYPE_OUT || type == TYPE_APPEND)
+		if (cursor->next && (cursor->next->type * cursor->type) != 0)
+		{
+			msg = ft_strjoin("syntax error after ", cursor->token);
+			generate_error(msg);
+			free(msg);
+			return (CODE_SYNTAX_ERROR);
+		}
+		if (type == TYPE_OUT || type == TYPE_IN || type == TYPE_APPEND)
 		{
 			if (cursor->next == 0 || cursor->next->type != TYPE_WORD)
 			{
-				last_return_code(set, CODE_SYNTAX_ERROR); // pas sur de cette ligne
+				generate_error("syntax error after redirection");
 				return (CODE_SYNTAX_ERROR);
 			}
 		}
@@ -68,9 +76,7 @@ int		exec_pipe(char **cmd)
 
 	pid = fork();
 	if (pid < 0)
-	{
 		return (0);
-	}
 	if (pid == CHILD_PROCESS)
 	{
 		if (ft_strchr(cmd[0], '/') == 0)

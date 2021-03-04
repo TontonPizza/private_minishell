@@ -35,9 +35,8 @@ void routine(char *line)
 	{
 		list = 0;
 		words_to_tokens_and_offset_words(&tool, &list);
-		if (list)
+		if (list && check_conformity(list) == 0)
 			execution_loop(list, -1);
-
 		destroy_token_list(list);
 		g_new_stdout = dup(1);
 		display_error();
@@ -51,16 +50,14 @@ int main(int argc, char **argv)
 	init_env_list();
 	export_var("PATH", "/bin");
 
-	log_file = open("error_log.txt", O_RDWR | O_CREAT, 0777);
+	log_file = open("error_log.txt", O_RDWR | O_TRUNC, 0777);
 
 	char *line;
 	g_new_stdin = dup(0);
 	write(g_new_stdout, ">>> ", 4);
 	while (get_next_line(g_new_stdin, &line))
 	{
-		if (ft_strlen(line) == 0)
-			;
-		else
+		if (ft_strlen(line) > 0)
 			routine(line);
 		write(g_new_stdout, ">>> ", 4);
 	}

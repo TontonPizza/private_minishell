@@ -16,7 +16,9 @@ SRCS	=	minishell.c \
 			./srcs/builtins/path_to_binary.c \
 			./srcs/execution/fd_manipulation.c \
 			./srcs/execution/exec_binary.c \
-			./srcs/execution/builtin_1.c \
+			./srcs/builtins/builtin_env.c \
+			./srcs/builtins/builtin_export_unset.c \
+			./srcs/bullshit_functions/bullshit_functions.c \
         	./libft/libft.a \
 
 

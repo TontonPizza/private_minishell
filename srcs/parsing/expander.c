@@ -85,21 +85,24 @@ char 	*remove_quote(char *word)
 	i = 0;
 	while (word[i])
 	{
-		if (word[i] == DOUBLE_QUOTE && ++i) {
+		if (word[i] == DOUBLE_QUOTE && ++i)
+		{
 			while (word[i] && word[i] != DOUBLE_QUOTE)
-				result = join_char_and_free(result, word[i++]);
+				result = join_char_and_free(result, tr(word[i++], 11, '\''));
 			if (word[i] == DOUBLE_QUOTE)
 				i++;
-		} else if (word[i] == SIMPLE_QUOTE && ++i) {
+		}
+		else if (word[i] == SIMPLE_QUOTE && ++i)
+		{
 			while (word[i] && word[i] != SIMPLE_QUOTE)
-				result = join_char_and_free(result, word[i++]);
+				result = join_char_and_free(result, tr(word[i++], 12, '"'));
 			if (word[i] == SIMPLE_QUOTE)
 				i++;
-		} else
+		}
+		else
 			result = join_char_and_free(result, word[i++]);
 	}
-	result[i] = 0;
-	return (result);
+	return (place_zero(result, i));
 }
 
 char	**expand_word(char *word)

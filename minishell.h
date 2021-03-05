@@ -28,11 +28,11 @@
 # endif
 
 # ifndef SIMPLE_QUOTE
-#  define SIMPLE_QUOTE 43
+#  define SIMPLE_QUOTE 11
 # endif
 
 # ifndef DOUBLE_QUOTE
-#  define DOUBLE_QUOTE 126
+#  define DOUBLE_QUOTE 12
 # endif
 
 enum e_error_type
@@ -160,9 +160,15 @@ char		*path_to_binary(char *word);
 int 		search_binary_or_builtin_and_exec(char **cmd);
 int			exec_pipe(char **cmd);
 int 		builtin_env(void);
-/***********************************/
-/***********************************/
+int 		builtin_export(char **cmd);
+int 		builtin_unset(char **cmd);
 
+/***********************************/
+/***********************************/
+// BULLSHIT
+
+char 	*place_zero(char *result, int i);
+char 	tr(char a, char b, char c);
 
 void 	log_error(char *msg, char *complement);
 

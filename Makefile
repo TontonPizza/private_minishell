@@ -12,6 +12,7 @@ SRCS	=	minishell.c \
 			./srcs/parsing/expander_2.c\
 			./srcs/parsing/token_manipulation.c\
 			./srcs/execution/execution_loop.c \
+			./srcs/execution/execution_loop_2.c \
 			./srcs/error_buffer/error_buffer.c \
 			./srcs/error_buffer/error_buffer_2.c \
 			./srcs/builtins/path_to_binary.c \
@@ -35,7 +36,7 @@ all: $(NAME)
 					make clean -C ./libft
 
 $(NAME): $(SRCS) minishell.h Makefile
-		clang $(SRCS) ./srcs/tests/*.c ./libft/libft.a -o minishell
+		clang $(SRCS) ./libft/libft.a -o minishell
 
 
 clear:	$(NAME)

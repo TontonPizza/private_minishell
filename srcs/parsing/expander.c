@@ -31,7 +31,7 @@ char 	*expand_env_variable(char *word, int *cursor)
 	else if (word[*cursor] == '?')
 	{
 		(*cursor)++;
-		return ft_itoa(last_return_code(get, 0));
+		return (ft_itoa(last_return_code(get, 0)));
 	}
 	else if (ft_isalpha(word[*cursor]) == 0)
 		return (ft_strdup("$"));
@@ -79,7 +79,7 @@ char	*expand_backslash_and_parameters(char *word)
 char 	*remove_quote(char *word)
 {
 	char	*result;
-	int 	i;
+	int		i;
 
 	result = 0;
 	i = 0;
@@ -115,7 +115,8 @@ char	**expand_word(char *word)
 	word = expand_backslash_and_parameters(word);
 	result = word_split(word);
 	free(word);
-	while (result[i]) {
+	while (result[i])
+	{
 		temp = result[i];
 		result[i] = remove_quote(result[i]);
 		free(temp);

@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-int		error_msg(char *msg)
+int	error_msg(char *msg)
 {
 	ft_putstr_fd("Error opening file : ", 2);
 	ft_putendl_fd(msg, 2);
@@ -21,8 +21,8 @@ int		error_msg(char *msg)
 
 int 	source_fd(int source, t_token *list)
 {
-	t_token *cursor;
-	int 	last_fd;
+	t_token	*cursor;
+	int		last_fd;
 
 	cursor = list;
 	last_fd = source;
@@ -45,5 +45,5 @@ int 	source_fd(int source, t_token *list)
 
 int 	dest_fd(int pipe_fd, t_token *list)
 {
-	return 0;
+	return (0);
 }

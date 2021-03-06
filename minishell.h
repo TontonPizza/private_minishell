@@ -10,7 +10,6 @@
 # endif
 
 # include "libft/libft.h"
-# include "srcs/tests/tests.h"
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -187,6 +186,7 @@ void sighandler_quit(int signum);
 /***********************************/
 // BULLSHIT
 
+int		ptr_p(int *ptr, int i);
 char	**fix_words(char **words);
 int 	has_out(t_token *list);
 void	free_at_exit(int op, char **p1, t_token *p2);

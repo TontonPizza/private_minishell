@@ -18,43 +18,14 @@
  *
  */
 
-int		check_conformity(t_token *list)
-{
-	t_token	*cursor = list;
-	int 	type;
-	char 	*msg;
-
-	while(cursor)
-	{
-		type = cursor->type;
-		if (cursor->next && (cursor->next->type * cursor->type) != 0)
-		{
-			msg = ft_strjoin("syntax error after ", cursor->token);
-			generate_error(msg, 2);
-			free(msg);
-			return (CODE_SYNTAX_ERROR);
-		}
-		if (type == TYPE_OUT || type == TYPE_IN || type == TYPE_APPEND)
-		{
-			if (cursor->next == 0 || cursor->next->type != TYPE_WORD)
-			{
-				generate_error("syntax error after redirection", 2);
-				return (CODE_SYNTAX_ERROR);
-			}
-		}
-		cursor = cursor->next;
-	}
-	return (CODE_OK);
-}
-
-char 	**export_token_to_command(t_token *list) // prends la liste et extrait la premiere chaine de commande avant le |
+char 	**export_token_to_command(t_token *list)
 {
 	char	**words;
-	int 	i;
-	int 	k;
+	int		i;
+	int		k;
 
 	i = 0;
-	words = x_malloc((int)sizeof(char *) * (token_list_size(list) + 2));
+	words = x_malloc((int) sizeof(char *) * (token_list_size(list) + 2));
 	while (list && list->type != TYPE_PIPE)
 	{
 		k = list->type;
@@ -70,7 +41,6 @@ char 	**export_token_to_command(t_token *list) // prends la liste et extrait la 
 	return (words);
 }
 
-
 t_token	*next_command_after_pipe(t_token *list)
 {
 	while (list && list->type != TYPE_PIPE)
@@ -79,12 +49,12 @@ t_token	*next_command_after_pipe(t_token *list)
 	}
 	if (list && list->type == TYPE_PIPE)
 		list = list->next;
-	return list;
+	return (list);
 }
 
-int		get_real_source(t_token *list, int source)
+int	get_real_source(t_token *list, int source)
 {
-	int 	result;
+	int	result;
 
 	result = source;
 	while (list && list->type != TYPE_PIPE)
@@ -102,17 +72,17 @@ int		get_real_source(t_token *list, int source)
 		}
 		list = list->next;
 	}
-	return result;
+	return (result);
 }
 
 int 	get_real_dest(t_token *list, int dest)
 {
-	int 	result;
+	int	result;
 
 	result = dest;
 	while (list && list->type != TYPE_PIPE)
 	{
-		if (list->type ==  TYPE_OUT)
+		if (list->type == TYPE_OUT)
 		{
 			close(result);
 			result = open(list->next->token, O_WRONLY | O_CREAT, 0777);
@@ -128,7 +98,7 @@ int 	get_real_dest(t_token *list, int dest)
 		}
 		list = list->next;
 	}
-	return result;
+	return (result);
 }
 
 int 	execution_loop(t_token *list, int source)
@@ -149,5 +119,5 @@ int 	execution_loop(t_token *list, int source)
 	if (is_there_an_error() == FALSE)
 		search_binary_or_builtin_and_exec(export_token_to_command(list));
 	close(pipe_fd[1]);
-	return execution_loop(next_command_after_pipe(list), pipe_fd[0]);
+	return (execution_loop(next_command_after_pipe(list), pipe_fd[0]));
 }

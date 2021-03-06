@@ -27,7 +27,7 @@ int 	token_list_size(t_token *list)
 
 void	token_list_add_last(t_token **first_element, t_token *item)
 {
-	t_token *cursor;
+	t_token	*cursor;
 
 	cursor = *first_element;
 	if (*first_element == 0)
@@ -42,9 +42,9 @@ void	token_list_add_last(t_token **first_element, t_token *item)
 	return ;
 }
 
-t_token		*token_constructor(char *name, int type, int free_val)
+t_token	*token_constructor(char *name, int type, int free_val)
 {
-	t_token *a;
+	t_token	*a;
 
 	a = x_malloc(sizeof(t_token));
 	a->token = ft_strdup(name);
@@ -55,14 +55,14 @@ t_token		*token_constructor(char *name, int type, int free_val)
 	return (a);
 }
 
-void		token_destructor(t_token *item)
+void	token_destructor(t_token *item)
 {
 	free(item->token);
 	free(item);
 	item = NULL;
 }
 
-void		destroy_token_list(t_token *item)
+void	destroy_token_list(t_token *item)
 {
 	if (item == 0)
 		return ;

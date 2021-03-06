@@ -18,8 +18,7 @@
 
 #include "../../minishell.h"
 
-
-void		add_words_to_token_list(t_token **list, char **words)
+void	add_words_to_token_list(t_token **list, char **words)
 {
 	int		i;
 
@@ -31,12 +30,12 @@ void		add_words_to_token_list(t_token **list, char **words)
 	}
 }
 
-void		words_to_tokens_and_offset_words(char ***words, t_token **list)
+void	words_to_tokens_and_offset_words(char ***words, t_token **list)
 {
-	char 	**expand;
-	char 	**tmp;
-	int 	i;
-	t_token *tok;
+	char	**expand;
+	char	**tmp;
+	int		i;
+	t_token	*tok;
 
 	i = 0;
 	while ((*words)[i] && token_type((*words)[i]) != TYPE_END)

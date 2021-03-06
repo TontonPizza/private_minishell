@@ -12,9 +12,9 @@
 
 #include "../../minishell.h"
 
-char 		*check_for_separator(char *text, int *cursor)
+char	*check_for_separator(char *text, int *cursor)
 {
-	char buffer[3];
+	char	buffer[3];
 
 	buffer[0] = 0;
 	buffer[1] = 0;
@@ -29,7 +29,7 @@ char 		*check_for_separator(char *text, int *cursor)
 	return (ft_strdup(buffer));
 }
 
-char		*get_next_word(char *text, int *cursor, int i)
+char	*get_next_word(char *text, int *cursor, int i)
 {
 	char	*new_text;
 	char	sep;
@@ -37,7 +37,7 @@ char		*get_next_word(char *text, int *cursor, int i)
 	while ((text[i] == ' ' || text[i] == '\t') && text[i])
 		i++;
 	new_text = check_for_separator(text + i, &i);
-	if (new_text && ft_strlen(new_text) > 0 && (*cursor += i))
+	if (new_text && ft_strlen(new_text) > 0 && (ptr_p(cursor, i)))
 		return (new_text);
 	while (new_text && text[i] && is_char_in_set(text[i], ";|<> ") == 0)
 	{
@@ -58,7 +58,7 @@ char		*get_next_word(char *text, int *cursor, int i)
 	return (new_text);
 }
 
-char		**get_words(char *line)
+char	**get_words(char *line)
 {
 	char	**result;
 	int		cursor;
@@ -80,7 +80,7 @@ char		**get_words(char *line)
 
 char 	**get_words_and_free(char *line)
 {
-	char **result;
+	char	**result;
 
 	result = get_words(line);
 	free(line);

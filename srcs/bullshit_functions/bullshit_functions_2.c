@@ -12,6 +12,12 @@
 
 #include "../../minishell.h"
 
+int ptr_p(int *ptr, int i)
+{
+	*ptr += i;
+	return (1);
+}
+
 int 	define_redirect(int red, char c)
 {
 	if (c == '>')
@@ -20,7 +26,6 @@ int 	define_redirect(int red, char c)
 		return (0);
 	return (red);
 }
-
 
 char	**fix_words(char **words)
 {

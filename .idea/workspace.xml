@@ -16,7 +16,25 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="" />
+    <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions_2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/execution/fd_manipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/fd_manipulation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/expander.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/expander.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/lexer.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/lexer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/lexer_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/lexer_2.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/token_manipulation.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/token_manipulation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/parsing/tokenizer.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/parsing/tokenizer.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/read_line/read_line.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/tests/test_env.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/tests/test_parsing.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/tests/test_token.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/tests/tests.h" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +129,7 @@
       <workItem from="1614085239016" duration="3251000" />
       <workItem from="1614866174160" duration="64000" />
       <workItem from="1614866267214" duration="11229000" />
-      <workItem from="1614972662762" duration="32300000" />
+      <workItem from="1614972662762" duration="33294000" />
     </task>
     <servers />
   </component>

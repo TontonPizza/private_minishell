@@ -12,9 +12,9 @@
 
 #include "../../minishell.h"
 
-int 		token_type(char *word)
+int	token_type(char *word)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(word);
 	if (ft_strncmp(word, "|", i) == 0)
@@ -30,16 +30,16 @@ int 		token_type(char *word)
 	return (TYPE_WORD);
 }
 
-char 		**words_after_semicolon(char **words)
+char	**words_after_semicolon(char **words)
 {
 	char	**result;
-	int 	i;
-	int 	k;
+	int		i;
+	int		k;
 
 	result = x_malloc(sizeof(char *) * (split_size(words) + 2));
 	i = 0;
 	k = 0;
-	while (words[i] && token_type(words[i]) !=  TYPE_END)
+	while (words[i] && token_type(words[i]) != TYPE_END)
 	{
 		i++;
 	}

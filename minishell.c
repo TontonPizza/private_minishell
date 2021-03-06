@@ -12,6 +12,40 @@
 
 #include "minishell.h"
 
+char	**fix_words(char **words)
+{
+	char	**result;
+	int 	i;
+	int 	redirect;
+
+	result = x_malloc(sizeof(char *));
+	result[0] = 0;
+	redirect = 0;
+	i = 0;
+	while(words[i])
+	{
+		if(words[i][0] == '>')
+			redirect =1;
+		if (words[i][0] == '|')
+			redirect = 0;
+		if (words[i][0] == ';' && redirect == 1)
+		{
+			result = split_join_string(result, "|");
+			result = split_join_string(result, "ignore");
+			redirect = 0;
+		}
+		result = split_join_string(result, words[i]);
+		i++;
+	}
+	if (redirect == 1)
+	{
+		result = split_join_string(result, "|");
+		result = split_join_string(result, "ignore");
+	}
+	free_split(words);
+	return result;
+}
+
 void routine(char *line)
 {
 	char	**words;
@@ -19,6 +53,7 @@ void routine(char *line)
 	int 	no_empty;
 
 	words = get_words_and_free(line);
+	words = fix_words(words);
 	g_new_stdout = dup(1);
 	while (words)
 	{
@@ -28,7 +63,9 @@ void routine(char *line)
 		words_to_tokens_and_offset_words(&words, &list);
 		free_at_exit(set, words, list);
 		if (list && check_conformity(list) == 0)
+		{
 			execution_loop(list, -1);
+		}
 		no_empty = (list == 0);
 		destroy_token_list(list);
 		g_new_stdout = dup(1);

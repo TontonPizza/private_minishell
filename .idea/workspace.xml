@@ -18,12 +18,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/minishell.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/buffers/error.txt" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/buffers/error.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_echo.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_echo.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/bullshit_functions/bullshit_functions.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/execution/execution_loop.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/execution_loop.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/sighandlers/sighandlers.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +119,7 @@
       <workItem from="1614085239016" duration="3251000" />
       <workItem from="1614866174160" duration="64000" />
       <workItem from="1614866267214" duration="11229000" />
-      <workItem from="1614972662762" duration="20174000" />
+      <workItem from="1614972662762" duration="30874000" />
     </task>
     <servers />
   </component>

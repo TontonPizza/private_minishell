@@ -13,9 +13,17 @@
 
 #include "../../minishell.h"
 
-/*
- *		ternary
- */
+int 	has_out(t_token *list)
+{
+	while (list)
+	{
+		if (list->type == TYPE_APPEND || list->type == TYPE_OUT)
+			return (1);
+		list = list->next;
+	}
+	return (0);
+}
+
 char 	tr(char a, char b, char c)
 {
 	if (a == b)

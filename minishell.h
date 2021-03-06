@@ -187,6 +187,7 @@ void sighandler_quit(int signum);
 /***********************************/
 // BULLSHIT
 
+int 	has_out(t_token *list);
 void	free_at_exit(int op, char **p1, t_token *p2);
 void 	free_if_not_null(void *ptr);
 int 	last_pipe(int op, int value);

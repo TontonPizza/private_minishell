@@ -144,7 +144,7 @@ int 	execution_loop(t_token *list, int source)
 	if (next_command_after_pipe(list) == 0 && last_pipe(set, TRUE))
 	{
 		dup2(g_new_stdout, 1);
-//		close(g_new_stdout);
+		close(g_new_stdout);
 	}
 	if (is_there_an_error() == FALSE)
 		search_binary_or_builtin_and_exec(export_token_to_command(list));

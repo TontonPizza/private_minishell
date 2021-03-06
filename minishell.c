@@ -22,7 +22,6 @@ void 	log_error(char *msg, char *complement)
 void routine(char *line)
 {
 	char	**words;
-	char 	**tool;
 	t_token *list;
 	int 	no_empty;
 
@@ -63,7 +62,6 @@ int main(int argc, char **argv)
 			routine(line);
 		write(g_new_stdout, ">>> ", 4);
 	}
-
 	destroy_env();
 	clear_error_buffer();
 }

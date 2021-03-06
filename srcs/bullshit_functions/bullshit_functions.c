@@ -51,12 +51,14 @@ void 	free_if_not_null(void *ptr)
 void	free_at_exit(int op, char **p1, t_token *p2)
 {
 	static char **st1;
+	static t_token *st2;
 
 	if (op == set)
 	{
 		st1 = p1;
+		st2 = p2;
 		return ;
 	}
 	free(st1);
-	destroy_token_list(p2);
+	destroy_token_list(st2);
 }

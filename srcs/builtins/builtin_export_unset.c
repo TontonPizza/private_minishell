@@ -67,6 +67,7 @@ int 	builtin_export(char **cmd)
 			generate_error("export : invalid identifier", 1);
 		i++;
 	}
+	free_split(cmd);
 	return (0);
 }
 
@@ -80,5 +81,6 @@ int 	builtin_unset(char **cmd)
 			unset_env(cmd[i]);
 			i++;
 		}
+		free_split(cmd);
 		return (0);
 }

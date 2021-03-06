@@ -167,13 +167,13 @@ int		is_there_an_error(void);
 char		*path_to_binary(char *word);
 int 		search_binary_or_builtin_and_exec(char **cmd);
 int			exec_pipe(char **cmd);
-int 		builtin_env(void);
+int 		builtin_env(char **cmd);
 int 		builtin_export(char **cmd);
 int 		builtin_unset(char **cmd);
 int 		builtin_echo(char **cmd);
 int 		builtin_cd(char **cmd);
 int			isfile(char *path);
-int			builtin_pwd();
+int			builtin_pwd(char **cmd);
 int 		builtin_exit(char **cmd);
 /***********************************/
 /***********************************/

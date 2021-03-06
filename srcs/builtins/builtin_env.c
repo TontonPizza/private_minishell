@@ -12,7 +12,7 @@
 
 #include "../../minishell.h"
 
-int 	builtin_env(void)
+int 	builtin_env(char **cmd)
 {
 	char	**env_array;
 	int 	i;
@@ -24,5 +24,6 @@ int 	builtin_env(void)
 		ft_putendl_fd(env_array[i], 1);
 		i++;
 	}
+	free_split(cmd);
 	return (0);
 }

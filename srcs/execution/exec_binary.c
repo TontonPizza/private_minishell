@@ -38,9 +38,9 @@ int 	search_binary_or_builtin_and_exec(char **cmd)
 	if (vo_strcmp(cmd[0], "cd") == 0)
 		return (builtin_cd(cmd));
 	if (vo_strcmp(cmd[0], "pwd") == 0)
-		return (builtin_pwd());
+		return (builtin_pwd(cmd));
 	if (vo_strcmp(cmd[0], "env") == 0)
-		return (builtin_env());
+		return (builtin_env(cmd));
 	if (vo_strcmp(cmd[0], "exit") == 0)
 		return (builtin_exit(cmd));
 	exec_pipe(cmd);

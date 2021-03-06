@@ -27,14 +27,14 @@ void routine(char *line)
 	int 	no_empty;
 
 	words = get_words_and_free(line);
-	tool = words;
 	g_new_stdout = dup(1);
-	while (tool)
+	while (words)
 	{
-		free_at_exit(set, words, tool);
+
 		list = 0;
 		last_pipe(set, FALSE);
-		words_to_tokens_and_offset_words(&tool, &list);
+		words_to_tokens_and_offset_words(&words, &list);
+		free_at_exit(set, words, list);
 		if (list && check_conformity(list) == 0)
 			execution_loop(list, -1);
 		no_empty = (list == 0);
@@ -43,6 +43,7 @@ void routine(char *line)
 		if (no_empty)
 			display_error();
 	}
+	free_split(words);
 }
 
 int main(int argc, char **argv)

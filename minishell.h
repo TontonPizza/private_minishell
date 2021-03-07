@@ -21,9 +21,19 @@
 # include <string.h>
 # include <stdio.h>
 # include <errno.h>
+# include <curses.h>
+# include <term.h>
 
 # ifndef FREE_ARG
 #  define FREE_ARG 1
+# endif
+
+# ifndef FALSE
+#  define FALSE 0
+# endif
+
+# ifndef TRUE
+#  define TRUE 1
 # endif
 
 # ifndef NO_FREE
@@ -47,12 +57,6 @@ enum e_error_type
 	CODE_OK,
 	CODE_NO_SUCH_FILE_OR_DIRECTORY,
 	CODE_SYNTAX_ERROR
-};
-
-enum e_bool_type
-{
-	FALSE,
-	TRUE,
 };
 
 enum e_token_type_code
@@ -174,6 +178,8 @@ int			builtin_exit(char **cmd);
 int 		exit_code(int op, int val);
 
 // SIGNALS
+void 		custom_msg_exit_code(int code);
+
 void		sighandler_int(int signum);
 void		sighandler_quit(int signum);
 

@@ -12,6 +12,15 @@
 
 #include "../../minishell.h"
 
+void custom_msg_exit_code(int code)
+{
+	if (code == 214)
+		write(g_new_stdout, " trop d'arguments", 17);
+	if (code == 131)
+		write(g_new_stdout, " (core dumped)", 14);
+	write(g_new_stdout, "\n", 1);
+}
+
 int		get_pid(int op, int val)
 {
 	static int pid;
@@ -32,7 +41,5 @@ void	sighandler_quit(int signum)
 {
 	if (get_pid(get, 0) < 0)
 		return;
-	last_return_code(set, 128 + signum);
-	write(1, "exit (core dumped)\n", ft_strlen("exit (core dumped)\n"));
-	exit(0);
+	exit_code(set, 131);
 }

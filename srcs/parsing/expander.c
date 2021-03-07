@@ -81,7 +81,7 @@ char 	*remove_quote(char *word)
 	char	*result;
 	int		i;
 
-	result = 0;
+	result = ft_calloc(ft_strlen(word) + 1, sizeof (char));
 	i = 0;
 	while (word[i])
 	{

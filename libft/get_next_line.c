@@ -123,8 +123,3 @@ int				get_next_line(int fd, char **line)
 		remains[fd][BUFFER_SIZE + 1] = 0;
 	return ((i == -1 || fd == -1) ? -1 : k != -1);
 }
-
-int		new_gnl(int fd, char **line)
-{
-
-}

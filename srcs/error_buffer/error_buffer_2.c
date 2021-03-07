@@ -14,6 +14,8 @@
 
 void 	set_error_num_according_to_msg(char *msg)
 {
+	last_return_code(set, 1);
+
 	return ;
 }
 
@@ -28,6 +30,8 @@ void 	display_error(void)
 		free(error_msg);
 		return ;
 	}
+	else
+		set_error_num_according_to_msg(error_msg);
 	ft_putendl_fd(error_msg, g_new_stdout);
 	free(error_msg);
 	clear_error_buffer();

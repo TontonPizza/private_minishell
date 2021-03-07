@@ -59,7 +59,7 @@ int	generate_error(char *message, int error_code)
 	{
 		last_return_code(set, error_code);
 	}
-	ft_putendl_fd(message, g_new_stderr);
+	ft_putendl_fd(message, g_err(get, 0));
 	return (-1);
 }
 
@@ -84,7 +84,7 @@ int	initialize_path_to_buffer(void)
 	fd = open(path_to_buffer(set), O_TRUNC | O_RDWR);
 	if (fd < 0)
 		return (-1);
-	g_new_stderr = fd;
-	dup2(g_new_stderr, 2);
+	g_err(set, fd);
+	dup2(g_err(get, 0), 2);
 	return (0);
 }

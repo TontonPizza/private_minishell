@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sighandlers.c                                      :+:      :+:    :+:   */
+/*   global.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vo-nguye <vo-nguye@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/65 14:21:39 by vo-nguye          #+#    #+#             */
-/*   Updated: 2021/03/65 14:21:39 by vo-nguye         ###   ########.fr       */
+/*   Created: 2021/03/65 21:14:20 by vo-nguye          #+#    #+#             */
+/*   Updated: 2021/03/65 21:14:20 by vo-nguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../minishell.h"
 
-void	sighandler_int(int signum)
+int	g_out(int op, int val)
 {
-	last_return_code(set, 128 + signum);
-	write(0, "\n", 1);
-	write_prompt();
+	static int	g;
+	if(op == set)
+		g = val;
+	return g;
 }
 
-void	sighandler_quit(int signum)
+int	g_in(int op, int val)
 {
-	last_return_code(set, 128 + signum);
-	write(g_new_stdout, "exit\n", 6);
-	exit(0);
+	static int	g;
+	if(op == set)
+		g = val;
+	return g;
+}
+
+int g_err(int op, int val)
+{
+	static int	g;
+	if(op == set)
+		g = val;
+	return g;
 }

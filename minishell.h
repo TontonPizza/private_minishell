@@ -93,10 +93,13 @@ typedef struct s_env_data
 	char		**all_env_as_array;
 }					t_env_data;
 
-int		g_new_stderr;
-int		g_new_stdin;
+//int		g_new_stderr;
+//int		g_new_stdin;
 int		g_new_stdout;
 
+int		g_out(int op, int val);
+int		g_in(int op, int val);
+int		g_err(int op, int val);
 // ENV MANIPULATION
 void		init_env_list(void);
 void		destroy_env(void);

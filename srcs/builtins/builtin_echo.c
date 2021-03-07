@@ -37,7 +37,8 @@ int	echo_vanilla(char **cmd)
 	{
 		if (i != 1)
 			ft_putstr_fd(" \0", 1);
-		ft_putstr_fd(cmd[i], 1);
+		if(ft_strlen(cmd[i]))
+			ft_putstr_fd(cmd[i], 1);
 		i++;
 	}
 	ft_putstr_fd("\n\0", 1);

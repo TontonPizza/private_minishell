@@ -54,9 +54,9 @@ int	main(int argc, char **argv)
 	export_var("PATH", "/bin");
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
-	g_new_stdin = dup(0);
+	g_in(set, dup(0));
 	write_prompt();
-	while (get_next_line(g_new_stdin, &line))
+	while (get_next_line(g_in(get, 0), &line))
 	{
 		if (ft_strlen(line) > 0)
 			routine(line);
@@ -65,4 +65,5 @@ int	main(int argc, char **argv)
 	write(g_new_stdout, "exit\n", 5);
 	destroy_env();
 	clear_error_buffer();
+	return (0);
 }

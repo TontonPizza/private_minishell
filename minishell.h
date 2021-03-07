@@ -171,6 +171,7 @@ int			builtin_cd(char **cmd);
 int			isfile(char *path);
 int			builtin_pwd(char **cmd);
 int			builtin_exit(char **cmd);
+int 		exit_code(int op, int val);
 
 // SIGNALS
 void		sighandler_int(int signum);

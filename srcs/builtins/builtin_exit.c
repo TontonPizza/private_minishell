@@ -12,16 +12,31 @@
 
 #include "../../minishell.h"
 
+int 	exit_code(int op, int val)
+{
+	static int	code;
+
+	if (op == set)
+		code = val;
+	return (code);
+}
+
 int 	builtin_exit(char **cmd)
 {
 	if (last_pipe(get, 0) == FALSE)
+	{
+		free_split(cmd);
 		return (0);
-	write(1, "exit\n", 5);
-	destroy_env();
-	clear_error_buffer();
-	free_at_exit(get, 0, 0);
-	free_split(cmd);
+	}
 	if (cmd[1] != 0)
-		exit(ft_atoi(cmd[1]));
-	exit(0);
+	{
+		if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
+			exit_code(set, 255);
+		else
+			exit_code(set, ft_atoi(cmd[1]));
+	}
+	else
+		exit_code(set, 0);
+	free_split(cmd);
+	return (0);
 }

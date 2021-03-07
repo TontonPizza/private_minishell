@@ -57,15 +57,18 @@ int	main(int argc, char **argv)
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));
 	get_pid(set, -1);
+	exit_code(set, -1);
 	write_prompt();
-	while (get_next_line(g_in(get, 0), &line))
+	while (get_next_line(g_in(get, 0), &line) && exit_code(get, 0) < 0)
 	{
 		if (ft_strlen(line) > 0)
 			routine(line);
+		if (exit_code(get, 0) >= 0)
+			break;
 		write_prompt();
 	}
 	write(g_new_stdout, "exit\n", 5);
 	destroy_env();
 	clear_error_buffer();
-	return (0);
+	return (exit_code(get, 0));
 }

@@ -187,6 +187,7 @@ void		sighandler_quit(int signum);
 /***********************************/
 // BULLSHIT
 
+char 		*join_2_char_bullshit(char *src, char *word, int *i);
 int			get_pid(int op, int val);
 int			ptr_p(int *ptr, int i);
 char		**fix_words(char **words);

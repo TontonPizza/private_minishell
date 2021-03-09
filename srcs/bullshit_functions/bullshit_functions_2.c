@@ -12,6 +12,16 @@
 
 #include "../../minishell.h"
 
+char 	*join_2_char_bullshit(char *src, char *word, int *i)
+{
+	char *result;
+
+	result = join_char_and_free(src, word[(*i)]);
+	result = join_char_and_free(result, word[(*i) + 1]);
+	*i += 2;
+	return (result);
+}
+
 int	ptr_p(int *ptr, int i)
 {
 	*ptr += i;

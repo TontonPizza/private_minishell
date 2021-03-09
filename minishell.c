@@ -19,6 +19,7 @@ void	routine(char *line)
 	int		no_empty;
 
 	words = get_words_and_free(line);
+	line = 0;
 	words = fix_words(words);
 	g_new_stdout = dup(1);
 	get_pid(set, -1);
@@ -29,9 +30,7 @@ void	routine(char *line)
 		words_to_tokens_and_offset_words(&words, &list);
 		free_at_exit(set, words, list);
 		if (list && check_conformity(list) == 0)
-		{
 			execution_loop(list, -1);
-		}
 		no_empty = (list == 0);
 		destroy_token_list(list);
 		g_new_stdout = dup(1);
@@ -64,6 +63,7 @@ int	main(int argc, char **argv)
 
 	init_all();
 	write_prompt();
+	line = 0;
 	while (get_next_line(g_in(get, 0), &line) && exit_code(get, 0) < 0)
 	{
 		if (ft_strlen(line) > 0)

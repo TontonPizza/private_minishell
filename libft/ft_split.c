@@ -52,7 +52,7 @@ char	**ft_split(char const *s, char c)
 	start = 0;
 	end = 0;
 	i_tab = 0;
-	res = (char **)x_malloc(sizeof(char *) * (ft_nbrsubstr(s, c) + 1))));
+	res = (char **)x_malloc(sizeof(char *) * (ft_nbrsubstr(s, c) + 1));
 	while (i_tab != ft_nbrsubstr(s, c))
 	{
 		while (s[start] == c)

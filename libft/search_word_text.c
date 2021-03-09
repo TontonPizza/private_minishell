@@ -23,7 +23,7 @@ int	search_word(char *text, char *word)
 	i = 0;
 	while (list[i] != NULL && found != 1)
 	{
-		if (ft_strncmp(word, list[i], length) == 0)
+		if (ft_strncmp(word, list[i], ft_strlen(word)) == 0)
 			found = 1;
 		free(list[i]);
 		i++;

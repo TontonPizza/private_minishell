@@ -112,7 +112,7 @@ int				get_next_line(int fd, char **line)
 	}
 	else
 		*line = join_and_free(*line, remains[fd]);
-	while ((has_n(*line, 0) == -1) && (i = read(fd, buffer, BUFFER_SIZE)) > 0)
+	while ((has_n(*line, 0) == -1) && ((i = read(fd, buffer, 1)) > 0 || (line && *line[0])))
 	{
 		buffer[i] = 0;
 		*line = join_and_free(*line, buffer);

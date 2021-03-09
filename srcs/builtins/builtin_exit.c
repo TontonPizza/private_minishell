@@ -37,7 +37,7 @@ int 	builtin_exit(char **cmd)
 	}
 	else
 		exit_code(set, 0);
-	if (cmd[2])
+	if (cmd[0] && cmd[1] && cmd[2])
 		exit_code(set, 214);
 	free_split(cmd);
 	return (0);

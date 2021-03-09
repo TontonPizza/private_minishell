@@ -58,15 +58,7 @@ void 	init_all()
 	exit_code(set, -1);
 }
 
-int main()
-{
-
-	tgetent(0, getenv("TERM"));
-
-	return 0;
-}
-
-int	main_0(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	char	*line;
 

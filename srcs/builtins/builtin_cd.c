@@ -14,12 +14,14 @@
 
 int 	builtin_cd(char **cmd)
 {
+	export_var("OLDPWD", getcwd(NULL, 500));
 	if (chdir(cmd[1]) != 0)
 	{
 		generate_error("No such file or directory", 2);
 		free_split(cmd);
 		return (-1);
 	}
+	export_var("PWD", getcwd(NULL, 500));
 	free_split(cmd);
 	return (0);
 }

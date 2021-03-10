@@ -48,7 +48,7 @@ char 	*expand_env_variable(char *word, int *cursor)
 	return (get_value_and_free_or_not(result, 1));
 }
 
-char	*expand_backslash_and_parameters(char *word)
+char	*expand_backslash_and_parameters__(char *word)
 {
 	char	*res;
 	int		i;

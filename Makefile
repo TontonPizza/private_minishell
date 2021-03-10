@@ -4,6 +4,7 @@ NAME = minishell
 SRCS	=	minishell.c \
 			./srcs/environnement/env_manipulation.c \
 			./srcs/environnement/env_manipulation_2.c \
+			./srcs/environnement/env_manipulation_3.c \
 			./srcs/environnement/last_return_code.c \
 			./srcs/parsing/lexer.c\
 			./srcs/parsing/lexer_2.c\
@@ -26,6 +27,7 @@ SRCS	=	minishell.c \
 			./srcs/builtins/builtin_exit.c \
 			./srcs/bullshit_functions/bullshit_functions.c \
 			./srcs/bullshit_functions/bullshit_functions_2.c \
+			./srcs/bullshit_functions/bullshit_functions_3.c \
 			./srcs/sighandlers/sighandlers.c \
         	./libft/libft.a \
 

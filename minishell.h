@@ -52,6 +52,10 @@
 #  define IGNORE_ERROR -42
 # endif
 
+# ifndef LORIE
+#  define LORIE "Xx_Lorie4ever69@$_xX"
+# endif
+
 enum e_error_type
 {
 	CODE_OK,
@@ -73,7 +77,10 @@ enum e_operation_type
 {
 	get,
 	set,
-	op_close
+	op_close,
+	first_call,
+	add,
+	del
 };
 
 typedef struct s_token
@@ -105,6 +112,7 @@ int		g_out(int op, int val);
 int		g_in(int op, int val);
 int		g_err(int op, int val);
 // ENV MANIPULATION
+
 void		init_env_list(void);
 void		destroy_env(void);
 
@@ -187,6 +195,7 @@ void		sighandler_quit(int signum);
 /***********************************/
 // BULLSHIT
 
+char 		*get_empty(void);
 char 		*join_2_char_bullshit(char *src, char *word, int *i);
 int			get_pid(int op, int val);
 int			ptr_p(int *ptr, int i);

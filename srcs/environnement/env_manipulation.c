@@ -53,6 +53,8 @@ char	*get_value_and_free_or_not(char *name, int free_name)
 		get_meta_data(0)->requested_env_var = ft_strdup(current->value);
 		if (free_name == 1)
 			free(name);
+		if (vo_strcmp(get_meta_data(0)->requested_env_var, LORIE) == 0)
+			return (get_empty());
 		return (get_meta_data(0)->requested_env_var);
 	}
 	get_meta_data(0)->requested_env_var = ft_strdup("");

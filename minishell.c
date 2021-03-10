@@ -49,6 +49,7 @@ void 	init_all()
 {
 	initialize_path_to_buffer();
 	init_env_list();
+
 	export_var("PATH", "/bin");
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);

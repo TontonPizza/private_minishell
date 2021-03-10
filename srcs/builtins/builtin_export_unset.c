@@ -53,19 +53,26 @@ int 	export_word(char *word)
 	return (0);
 }
 
-int 	empty_export()
+int 	empty_export(char **cmd)
 {
 	char	**env_array;
 	int		i;
+	char 	**split;
 
 	i = 0;
 	env_array = get_env_as_array();
 	while (env_array && env_array[i])
 	{
-		ft_putstr_fd("declare -x ", 1);
-		ft_putendl_fd(env_array[i], 1);
+		split = ft_split(env_array[i], '=');
+		if (vo_strcmp(split[split_size(split) - 1], LORIE) != 0)
+		{
+			ft_putstr_fd("declare -x ", 1);
+			ft_putendl_fd(env_array[i], 1);
+		}
+		free_split(split);
 		i++;
 	}
+	free_split(cmd);
 	return (0);
 }
 
@@ -75,7 +82,7 @@ int 	builtin_export(char **cmd)
 
 	i = 1;
 	if (split_size(cmd) == 1)
-		return (empty_export());
+		return (empty_export(cmd));
 	while (cmd[i])
 	{
 		if (is_argument_valid(cmd[i]))
@@ -90,12 +97,18 @@ int 	builtin_export(char **cmd)
 
 int 	builtin_unset(char **cmd)
 {
-	int	i;
+	int		i;
+	char 	*word;
 
 	i = 1;
 	while (cmd[i])
 	{
-		unset_env(cmd[i]);
+		word = ft_strdup(cmd[i]);
+		word = join_char_and_free(word, '=');
+		word = ft_strjoin_and_free(word, LORIE);
+		export_word(word);
+		free(word);
+//		unset_env(cmd[i]);
 		i++;
 	}
 	free_split(cmd);

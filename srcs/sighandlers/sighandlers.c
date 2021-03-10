@@ -40,6 +40,9 @@ void	sighandler_int(int signum)
 void	sighandler_quit(int signum)
 {
 	if (get_pid(get, 0) < 0)
+	{
+		write(g_new_stdout, "\b\b  \b\b", 6);
 		return;
+	}
 	exit_code(set, 131);
 }

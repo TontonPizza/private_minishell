@@ -9,7 +9,7 @@
 #  define CHILD_PROCESS 0
 # endif
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -106,12 +106,12 @@ typedef struct s_env_data
 
 //int		g_new_stderr;
 //int		g_new_stdin;
-int		g_new_stdout;
+int			g_new_stdout;
 
-int		g_out(int op, int val);
-int		g_in(int op, int val);
-int		g_err(int op, int val);
-void 	init_all();
+int			g_out(int op, int val);
+int			g_in(int op, int val);
+int			g_err(int op, int val);
+
 // ENV MANIPULATION
 
 void		init_env_list(void);
@@ -184,11 +184,11 @@ int			builtin_cd(char **cmd);
 int			isfile(char *path);
 int			builtin_pwd(char **cmd);
 int			builtin_exit(char **cmd);
-int 		exit_code(int op, int val);
+int			exit_code(int op, int val);
 
 // SIGNALS
-void 		custom_msg_exit_code(int code);
-int 		get_quit_flag(int op, int val);
+void		custom_msg_exit_code(int code);
+int			get_quit_flag(int op, int val);
 void		sighandler_int(int signum);
 void		sighandler_quit(int signum);
 
@@ -196,8 +196,7 @@ void		sighandler_quit(int signum);
 /***********************************/
 // BULLSHIT
 
-char 		*get_empty(void);
-char 		*join_2_char_bullshit(char *src, char *word, int *i);
+char		*join_2_char_bullshit(char *src, char *word, int *i);
 int			get_pid(int op, int val);
 int			ptr_p(int *ptr, int i);
 char		**fix_words(char **words);

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 int	isfile(char *path)
 {

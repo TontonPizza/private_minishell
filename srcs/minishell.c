@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
+#include "../headers/minishell.h"
 
 void	routine(char *line)
 {
@@ -45,12 +45,13 @@ void	write_prompt(void)
 	write(g_new_stdout, ">>> ", 4);
 }
 
-void 	init_all()
+void 	init_all(void)
 {
 	initialize_path_to_buffer();
 	init_env_list();
 	get_quit_flag(set, 0);
-	export_var("PATH", "/bin");
+	export_var("PATH", "/bin:/usr/bin");
+	export_var("TERM", "xterm-256color");
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));

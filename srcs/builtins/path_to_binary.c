@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 char	*path_to_binary(char *word)
 {

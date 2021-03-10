@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 int 	token_list_size(t_token *list)
 {

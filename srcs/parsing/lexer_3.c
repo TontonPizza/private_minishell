@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 char 	*copy_to_simple(char *word, int *index)
 {
 	char	*result;
-	int 	i;
+	int		i;
 
 	result = ft_strdup(word);
 	i = 0;
@@ -26,10 +26,10 @@ char 	*copy_to_simple(char *word, int *index)
 	return (result);
 }
 
-char 	*copy_to_double(char *word, int *index) // \ annule la sémantique d'un car si elle en a un
+char 	*copy_to_double(char *word, int *index)
 {
 	char	*result;
-	int 	i;
+	int		i;
 
 	result = 0;
 	i = 0;
@@ -51,14 +51,14 @@ char 	*copy_to_double(char *word, int *index) // \ annule la sémantique d'un ca
 char 	*expand_backslash_and_parameters(char *word)
 {
 	char	*result;
-	int 	i;
+	int		i;
 
 	i = 0;
 	result = 0;
 	while (word[i])
 	{
 		if (word[i] == '\'' && ++i)
-			result = strjoin_free_2(result, copy_to_simple(word + i, &i));/*i += copy_until_next_simple(result, word + i) */
+			result = strjoin_free_2(result, copy_to_simple(word + i, &i));
 		else if (word[i] == '\"' && ++i)
 			result = strjoin_free_2(result, copy_to_double(word + i, &i));
 		else if (word[i] == '\\' && ++i)

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 char 	*join_2_char_bullshit(char *src, char *word, int *i)
 {
-	char *result;
+	char	*result;
 
 	result = join_char_and_free(src, word[(*i)]);
 	result = join_char_and_free(result, word[(*i) + 1]);

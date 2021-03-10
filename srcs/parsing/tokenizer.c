@@ -16,7 +16,7 @@
  *
  */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 void	add_words_to_token_list(t_token **list, char **words)
 {

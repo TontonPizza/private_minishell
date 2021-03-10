@@ -10,13 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 int 	builtin_env(char **cmd)
 {
 	char	**env_array;
 	int		i;
-	char 	**split;
+	char	**split;
 
 	i = 0;
 	env_array = get_env_as_array();

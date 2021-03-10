@@ -1,7 +1,7 @@
 NAME = minishell
 
 
-SRCS	=	minishell.c \
+SRCS	=	./srcs/minishell.c \
 			./srcs/environnement/env_manipulation.c \
 			./srcs/environnement/env_manipulation_2.c \
 			./srcs/environnement/env_manipulation_3.c \
@@ -28,18 +28,25 @@ SRCS	=	minishell.c \
 			./srcs/builtins/builtin_exit.c \
 			./srcs/bullshit_functions/bullshit_functions.c \
 			./srcs/bullshit_functions/bullshit_functions_2.c \
-			./srcs/bullshit_functions/bullshit_functions_3.c \
 			./srcs/sighandlers/sighandlers.c \
         	./libft/libft.a \
 
 
 all: $(NAME)
 
+clean:
+	rm -f minishell
+
+fclean: clean
+
+
+re: fclean all
+
 ./libft/libft.a:
 					make -C ./libft/
 					make clean -C ./libft
 
-$(NAME): $(SRCS) minishell.h Makefile
+$(NAME): $(SRCS) headers/minishell.h Makefile
 		clang $(SRCS) ./libft/libft.a -o minishell
 
 

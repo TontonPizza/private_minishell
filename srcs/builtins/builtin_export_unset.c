@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 int 	is_argument_valid(char *word)
 {
@@ -57,7 +57,7 @@ int 	empty_export(char **cmd)
 {
 	char	**env_array;
 	int		i;
-	char 	**split;
+	char	**split;
 
 	i = 0;
 	env_array = get_env_as_array();
@@ -98,7 +98,7 @@ int 	builtin_export(char **cmd)
 int 	builtin_unset(char **cmd)
 {
 	int		i;
-	char 	*word;
+	char	*word;
 
 	i = 1;
 	while (cmd[i])

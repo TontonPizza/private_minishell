@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
-void custom_msg_exit_code(int code)
+void	custom_msg_exit_code(int code)
 {
 	if (code == 214)
 		write(g_new_stdout, " trop d'arguments", 17);
@@ -21,11 +21,11 @@ void custom_msg_exit_code(int code)
 	write(g_new_stdout, "\n", 1);
 }
 
-int		get_pid(int op, int val)
+int	get_pid(int op, int val)
 {
-	static int pid;
+	static int	pid;
 
-	if(op == set)
+	if (op == set)
 		pid = val;
 	return (pid);
 }
@@ -39,9 +39,9 @@ void	sighandler_int(int signum)
 
 int 	get_quit_flag(int op, int val)
 {
-	static int pid;
+	static int	pid;
 
-	if(op == set)
+	if (op == set)
 		pid = val;
 	return (pid);
 }
@@ -51,7 +51,7 @@ void	sighandler_quit(int signum)
 	if (get_pid(get, 0) < 0)
 	{
 		write(g_new_stdout, "\b\b  \b\b", 6);
-		return;
+		return ;
 	}
 	get_quit_flag(set, 1);
 	exit_code(set, 131);

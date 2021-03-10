@@ -10,28 +10,31 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 int	g_out(int op, int val)
 {
 	static int	g;
-	if(op == set)
+
+	if (op == set)
 		g = val;
-	return g;
+	return (g);
 }
 
 int	g_in(int op, int val)
 {
 	static int	g;
-	if(op == set)
+
+	if (op == set)
 		g = val;
-	return g;
+	return (g);
 }
 
-int g_err(int op, int val)
+int	g_err(int op, int val)
 {
 	static int	g;
-	if(op == set)
+
+	if (op == set)
 		g = val;
-	return g;
+	return (g);
 }

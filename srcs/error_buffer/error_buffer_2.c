@@ -10,12 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minishell.h"
+#include "../../headers/minishell.h"
 
 void 	set_error_num_according_to_msg(char *msg)
 {
 	last_return_code(set, 1);
-	if(search_word(msg, "such") == 1)
+	if (search_word(msg, "such") == 1)
 		last_return_code(set, 2);
 	return ;
 }

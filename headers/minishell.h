@@ -177,6 +177,8 @@ char		*get_buffer_content(void);
 int			is_there_an_error(void);
 
 // BUILD INS
+void		init_doge(void);
+int			builtin_doge(char **cmd);
 char		*path_to_binary(char *word);
 int			search_binary_or_builtin_and_exec(char **cmd);
 int			exec_pipe(char **cmd);

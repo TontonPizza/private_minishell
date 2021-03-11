@@ -64,8 +64,6 @@ void 	init_all(void)
 	initialize_path_to_buffer();
 	init_env_list();
 	get_quit_flag(set, 0);
-//	export_var("PATH", "/bin:/usr/bin");
-//	export_var("TERM", "xterm-256color");
 	signal(SIGINT, sighandler_int);
 	signal(SIGQUIT, sighandler_quit);
 	g_in(set, dup(0));
@@ -79,6 +77,7 @@ int	main(int argc, char **argv, char **envp)
 
 	init_all();
 	import_all_env(envp);
+	init_doge();
 	write_prompt();
 	line = 0;
 	while (get_next_line(g_in(get, 0), &line) > 0 && exit_code(get, 0) < 0)

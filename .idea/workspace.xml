@@ -18,10 +18,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/execution/exec_binary.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/exec_binary.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/srcs/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/minishell.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -135,7 +132,8 @@
       <workItem from="1615461359926" duration="224000" />
       <workItem from="1615462536638" duration="169000" />
       <workItem from="1615464394999" duration="145000" />
-      <workItem from="1615469864419" duration="11995000" />
+      <workItem from="1615469864419" duration="12830000" />
+      <workItem from="1615494352948" duration="331000" />
     </task>
     <servers />
   </component>

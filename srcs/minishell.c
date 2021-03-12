@@ -52,7 +52,8 @@ void	write_prompt(void)
 	split = ft_split(path, '/');
 	ft_putstr_fd(user, g_new_stdout);
 	ft_putchar_fd('~', g_new_stdout);
-	ft_putstr_fd(split[split_size(split) - 1], g_new_stdout);
+	if (split && split_size(split) > 0)
+		ft_putstr_fd(split[split_size(split) - 1], g_new_stdout);
 	write(g_new_stdout, PROMPT, ft_strlen(PROMPT));
 	free(path);
 	free(user);

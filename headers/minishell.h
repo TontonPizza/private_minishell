@@ -57,7 +57,7 @@
 # endif
 
 # ifndef PROMPT
-#  define PROMPT ">>> "
+#  define PROMPT " ༼ つ°ᴥ° ༽つ "
 # endif
 
 enum e_error_type

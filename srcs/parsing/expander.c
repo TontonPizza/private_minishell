@@ -73,34 +73,34 @@ char 	*expand_env_variable(char *word, int *cursor)
 	return (ft_strdup("$"));
 }
 
-char 	*expand_env_variable_old(char *word, int *cursor)
-{
-	char	*result;
-	int		brace;
-
-	result = 0;
-	brace = 0;
-	if (word[++(*cursor)] == '{')
-		brace = 1;
-	else if (word[*cursor] == '?')
-	{
-		(*cursor)++;
-		return (ft_itoa(last_return_code(get, 0)));
-	}
-	else if (ft_isalpha(word[*cursor]) == 0)
-		return (ft_strdup("$"));
-	while (ft_isalpha(word[*cursor]))
-		result = join_char_and_free(result, word[(*cursor)++]);
-	while (ft_isalnum(word[*cursor]))
-		result = join_char_and_free(result, word[(*cursor)++]);
-	if (brace == 1)
-	{
-		while (word[*cursor] && word[*cursor] != '}')
-			result = join_char_and_free(result, word[(*cursor)++]);
-	}
-	*cursor += brace;
-	return ((get_value_and_free_or_not(result, 1)));
-}
+//char 	*expand_env_variable_old(char *word, int *cursor)
+//{
+//	char	*result;
+//	int		brace;
+//
+//	result = 0;
+//	brace = 0;
+//	if (word[++(*cursor)] == '{')
+//		brace = 1;
+//	else if (word[*cursor] == '?')
+//	{
+//		(*cursor)++;
+//		return (ft_itoa(last_return_code(get, 0)));
+//	}
+//	else if (ft_isalpha(word[*cursor]) == 0)
+//		return (ft_strdup("$"));
+//	while (ft_isalpha(word[*cursor]))
+//		result = join_char_and_free(result, word[(*cursor)++]);
+//	while (ft_isalnum(word[*cursor]))
+//		result = join_char_and_free(result, word[(*cursor)++]);
+//	if (brace == 1)
+//	{
+//		while (word[*cursor] && word[*cursor] != '}')
+//			result = join_char_and_free(result, word[(*cursor)++]);
+//	}
+//	*cursor += brace;
+//	return ((get_value_and_free_or_not(result, 1)));
+//}
 
 char 	*remove_quote(char *word)
 {
@@ -131,6 +131,33 @@ char 	*remove_quote(char *word)
 	return (place_zero(result, i));
 }
 
+void 	replace_free_space(char *word)
+{
+	int		double_free;
+	int		simple_free;
+	int		i;
+
+	double_free = -1;
+	simple_free = -1;
+	i = 0;
+	while (word[i])
+	{
+		if (word[i] == '"' && simple_free == -1 && ++i)
+		{
+			double_free *= 1;
+			continue ;
+		}
+		if (word[i] == '\'' && double_free == -1 && ++i)
+		{
+			simple_free *= -1;
+			continue ;
+		}
+		if (word[i] == SPACE_C && (double_free == -1 || simple_free == -1))
+			word[i] = ' ';
+		i++;
+	}
+}
+
 char	**expand_word(char *word)
 {
 	char	**result;
@@ -139,7 +166,8 @@ char	**expand_word(char *word)
 
 	i = 0;
 	word = expand_backslash_and_parameters(word);
-	result = word_split(word);
+	replace_free_space(word);
+	result = ft_split(word, SPACE_C);
 	free(word);
 	while (result[i])
 	{

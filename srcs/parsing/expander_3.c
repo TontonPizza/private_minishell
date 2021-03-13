@@ -12,6 +12,22 @@
 
 #include "../../headers/minishell.h"
 
+char 	*replace_space(char *name, int *i)
+{
+	int		k;
+	char		*word;
+
+	word = expand_env_variable(name, i);
+	k = 0;
+	while (word[k])
+	{
+		if (word[k] == ' ')
+			word[k] = SPACE_C;
+		k++;
+	}
+	return (word);
+}
+
 char 	*copy_to_simple(char *word, int *index)
 {
 	char	*result;
@@ -45,7 +61,7 @@ char 	*copy_to_double(char *word, int *index)
 		if (word[i] == '"' && ++i)
 			break ;
 		if (word[i] == '$')
-			result = strjoin_free_2(result, expand_env_variable(word, &i));
+			result = strjoin_free_2(result, replace_space(word, &i));
 		if (word[i] && word[i] != '\\' && word[i] != '"')
 			result = join_char_and_free(result, word[i++]);
 	}
@@ -69,7 +85,7 @@ char 	*expand_backslash_and_parameters(char *word)
 		else if (word[i] == '\\' && ++i)
 			result = join_char_and_free(result, word[i++]);
 		else if (word[i] == '$')
-			result = strjoin_free_2(result, expand_env_variable(word, &i));
+			result = strjoin_free_2(result, replace_space(word, &i));
 		else if (word[i] == '"' && ++i)
 			result = join_char_and_free(result, DOUBLE_QUOTE);
 		else if (word[i] == '\'' && ++i)

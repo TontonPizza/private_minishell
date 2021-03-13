@@ -77,6 +77,9 @@ int	main(int argc, char **argv, char **envp)
 	char	*line;
 
 	init_all();
+	get_argv(set, argc, argv);
+
+
 	import_all_env(envp);
 	init_doge();
 	write_prompt();
@@ -95,6 +98,5 @@ int	main(int argc, char **argv, char **envp)
 	custom_msg_exit_code(exit_code(get, 0));
 	destroy_env();
 	clear_error_buffer();
-	argc = argv[0][0];
 	return (exit_code(get, 0));
 }

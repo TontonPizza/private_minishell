@@ -40,7 +40,7 @@ char 	*copy_to_double(char *word, int *index)
 		if (word[i] == '"' && ++i)
 			break ;
 		if (word[i] == '$')
-			result = ft_strjoin_and_free(result, expand_env_variable(word, &i));
+			result = strjoin_free_2(result, expand_env_variable(word, &i));
 		if (word[i] && word[i] != '\\' && word[i] != '"')
 			result = join_char_and_free(result, word[i++]);
 	}

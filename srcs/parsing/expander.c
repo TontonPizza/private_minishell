@@ -19,7 +19,60 @@
  *
  */
 
+/*
+ *		$~e =
+ *		$ deux digits, expand le premier digit
+ *		$ + lettres et _ digit = full replace
+ *		$$ = 3608
+ *		$# = 0
+ *
+ */
+char 	*get_argv(int op, int index, char **argv)
+{
+	static char		**argv_2;
+	static int		argc_2;
+
+	if (op == set)
+	{
+		argc_2 = index;
+		argv_2 = argv;
+		return (0);
+	}
+	if (op == hashtag)
+		return ft_itoa(argc_2 - 1);
+	if (index < argc_2)
+		return (ft_strdup(argv_2[index]));
+	return (ft_strdup(""));
+}
+
 char 	*expand_env_variable(char *word, int *cursor)
+{
+	char	*result;
+	int 	first;
+
+	result = 0;
+	first = 0;
+	if (ft_isdigit(word[++(*cursor)]))
+		return (get_argv(get, word[(*cursor)++] - '0', NULL));
+	else if (word[*cursor] == '?' && ((*cursor)++ || 1))
+		return (ft_itoa(last_return_code(get, 0)));
+	else if (word[*cursor] == '#' && ((*cursor)++ || 1))
+		return (get_argv(hashtag, 0, 0));
+	if (word[*cursor] == '$' && ((*cursor)++ || 1))
+		return (ft_strdup("3950"));
+	while (ft_isalpha(word[*cursor]))
+	{
+		first = 1;
+		result = join_char_and_free(result, word[(*cursor)++]);
+	}
+	while (first == 1 && (ft_isalnum(word[*cursor]) || word[*cursor] == '_'))
+		result = join_char_and_free(result, word[(*cursor)++]);
+	if (first > 0)
+		return ((get_value_and_free_or_not(result, 1)));
+	return (ft_strdup("$"));
+}
+
+char 	*expand_env_variable_old(char *word, int *cursor)
 {
 	char	*result;
 	int		brace;
@@ -45,7 +98,7 @@ char 	*expand_env_variable(char *word, int *cursor)
 			result = join_char_and_free(result, word[(*cursor)++]);
 	}
 	*cursor += brace;
-	return (get_value_and_free_or_not(result, 1));
+	return ((get_value_and_free_or_not(result, 1)));
 }
 
 char 	*remove_quote(char *word)

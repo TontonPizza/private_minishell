@@ -100,7 +100,8 @@ enum e_operation_type
 	op_close,
 	first_call,
 	add,
-	del
+	del,
+	hashtag
 };
 
 typedef struct s_token
@@ -161,6 +162,7 @@ void		destroy_token_list(t_token *item);
 int			token_list_size(t_token *list);
 
 // EXPANDER
+char		*get_argv(int op, int index, char **argv);
 char		*expand_env_variable(char *word, int *cursor);
 char		**expand_word(char *word);
 char		*expand_backslash_and_parameters(char *word);

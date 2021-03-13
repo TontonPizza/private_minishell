@@ -92,7 +92,7 @@ int 	get_real_dest(t_token *list, int dest)
 		if (list->type == TYPE_APPEND)
 		{
 			close(result);
-			result = open(list->next->token, O_WRONLY | O_APPEND, 0777);
+			result = open(list->next->token, O_WRONLY | O_APPEND | O_CREAT, 0777);
 			if (result < 0)
 				generate_error("Can't open file", 1);
 		}

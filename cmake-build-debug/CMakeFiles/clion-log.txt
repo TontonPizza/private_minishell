@@ -1,1 +1,1 @@
-CMakeLists.txt not found in /home/user42/Documents/minishell_ Select CMakeLists.txt
+CMakeLists.txt not found in /home/user42/Documents/minishell_pour_tous Select CMakeLists.txt

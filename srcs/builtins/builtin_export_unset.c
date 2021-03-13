@@ -23,6 +23,13 @@ int 	is_argument_valid(char *word)
 			return (0);
 		i++;
 	}
+	i = 0;
+	while (word[i] && word[i] != '=')
+	{
+		if (ft_isalnum(word[i]) == 0 && word[i] != '_')
+			return (0);
+		i++;
+	}
 	return (1);
 }
 

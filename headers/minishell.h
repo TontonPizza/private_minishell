@@ -64,6 +64,10 @@
 #  define SEMI_COLON '\x14'
 # endif
 
+# ifndef SPACE_C
+#  define SPACE_C '\x15'
+# endif
+
 # ifndef IGNORE_ERROR
 #  define IGNORE_ERROR -42
 # endif

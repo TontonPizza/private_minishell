@@ -17,12 +17,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/headers/minishell.h" beforeDir="false" afterPath="$PROJECT_DIR$/headers/minishell.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_exit.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_exit.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/execution/exec_binary.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/execution/exec_binary.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/srcs/minishell.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/minishell.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_cd.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/builtins/builtin_cd.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +135,7 @@
       <workItem from="1615595486613" duration="4585000" />
       <workItem from="1615603314047" duration="2913000" />
       <workItem from="1615642572743" duration="4066000" />
-      <workItem from="1615647838856" duration="9414000" />
+      <workItem from="1615647838856" duration="10312000" />
     </task>
     <servers />
   </component>

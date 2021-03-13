@@ -107,8 +107,7 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		write_prompt();
 	}
-	if (exit_code(get, 0) < 0)
-		free(line);
+	free(line);
 	write(g_new_stdout, "exit", 5);
 	if (get_quit_flag(get, 3))
 		ft_putstr_fd(" : non numerical argument\n", g_new_stdout);

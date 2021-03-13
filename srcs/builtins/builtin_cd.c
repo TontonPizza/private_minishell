@@ -22,26 +22,26 @@ int 	builtin_cd(char **cmd)
 {
 	char	**split;
 	int		i;
+	char	*pwd;
 
 	i = 0;
 	if (cmd[1] == 0)
-	{
-		free_split(cmd);
-		return (0);
-	}
+		return (free_split(cmd));
+	pwd = getcwd(NULL, 500);
 	export_var_free("OLDPWD", getcwd(NULL, 500));
 	split = ft_split(cmd[1], '/');
-	while (cmd[0] && cmd[1] && split[i])
+	while (i >= 0 && cmd[0] && cmd[1] && split[i])
 	{
 		if (chdir(split[i]) != 0)
 		{
 			generate_error("No such file or directory", 2);
-			free_split(cmd);
-			free_split(split);
-			return (-1);
+			i = -10;
 		}
 		i++;
 	}
+	if (i < 0)
+		chdir(pwd);
+	free(pwd);
 	export_var_free("PWD", getcwd(NULL, 500));
 	return (free_split(cmd) + free_split(split));
 }

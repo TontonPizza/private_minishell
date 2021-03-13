@@ -59,7 +59,7 @@ int 	builtin_exit(char **cmd, int size)
 	}
 	else if (last_pipe(get, 0) == FALSE)
 	{
-		free_split(cmd);
+		return (free_split(cmd));
 	}
 	else if (cmd[1] != 0)
 	{
@@ -70,5 +70,5 @@ int 	builtin_exit(char **cmd, int size)
 	}
 	else
 		exit_code(set, last_return_code(get, 0));
-	return (0);
+	return (free_split(cmd));
 }

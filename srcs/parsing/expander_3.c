@@ -14,7 +14,7 @@
 
 char 	*replace_space(char *name, int *i)
 {
-	int		k;
+	int			k;
 	char		*word;
 
 	word = expand_env_variable(name, i);

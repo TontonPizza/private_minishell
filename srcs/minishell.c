@@ -41,7 +41,7 @@ void	routine(char *line)
 	free_split(words);
 }
 
-void 	sig_message()
+void 	sig_message(void)
 {
 	if (get_quit_flag(get, 0) == 1)
 	{

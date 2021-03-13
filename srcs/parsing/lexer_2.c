@@ -12,6 +12,48 @@
 
 #include "../../headers/minishell.h"
 
+char 	key_to_code(char c)
+{
+	if (c == ';')
+		return (SEMI_COLON);
+	if (c == '|')
+		return (PIPE_C);
+	if (c == '<')
+		return (ARROW_LEFT);
+	if (c == '>')
+		return (ARROW_RIGHT);
+	return (c);
+}
+
+void	replace_free_sep(char *line, int bs, int dq, int sq)
+{
+	int		i;
+
+	i = 0;
+	while (line[i])
+	{
+		bs = 0;
+		if (line[i] == '"' && sq == -1 && bs % 2 == 0 && ++i)
+		{
+			dq *= -1;
+			continue ;
+		}
+		if (line[i] == '\'' && dq == -1 && ++i)
+		{
+			sq *= -1;
+			continue ;
+		}
+		while (line[i] == '\\')
+		{
+			bs++;
+			i++;
+		}
+		if (bs % 2 == 0 && dq == -1 && sq == -1)
+			line[i] = key_to_code(line[i]);
+		i++;
+	}
+}
+
 int	token_type(char *word)
 {
 	int	i;

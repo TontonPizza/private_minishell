@@ -48,8 +48,6 @@
 #  define DOUBLE_QUOTE 12
 # endif
 
-
-
 # ifndef ARROW_LEFT
 #  define ARROW_LEFT '\x11'
 # endif
@@ -149,7 +147,7 @@ void		export_var(char *name, char *value);
 void		unset_env(char *name);
 
 // PARSING
-
+void		replace_free_sep(char *line, int bs, int dq, int sq);
 char		**get_words_and_free(char *line);
 char		**get_words(char *line);
 char		*clean_word(char *word);

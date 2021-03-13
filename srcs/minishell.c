@@ -41,12 +41,35 @@ void	routine(char *line)
 	free_split(words);
 }
 
+void 	sig_message()
+{
+	if (get_quit_flag(get, 0) == 1)
+	{
+		ft_putstr_fd("Abandon (core dumped)\n", g_new_stdout);
+		get_quit_flag(set, 0);
+		last_return_code(set, 131);
+	}
+	if (get_quit_flag(get, 0) == 2)
+	{
+		ft_putstr_fd("exit : too many arguments\n", g_new_stdout);
+		get_quit_flag(set, 0);
+		last_return_code(set, 1);
+	}
+	if (get_quit_flag(get, 0) == 3)
+	{
+		ft_putstr_fd("exit : non numerical value\n", g_new_stdout);
+		get_quit_flag(set, 0);
+		last_return_code(set, 1);
+	}
+}
+
 void	write_prompt(void)
 {
 	char	*path;
 	char	*user;
 	char	**split;
 
+	sig_message();
 	user = get_value_and_free_or_not("USER", 0);
 	path = getcwd(NULL, 500);
 	split = ft_split(path, '/');
@@ -93,7 +116,6 @@ int	main(int argc, char **argv, char **envp)
 	if (exit_code(get, 0) < 0)
 		free(line);
 	write(g_new_stdout, "exit", 5);
-	custom_msg_exit_code(exit_code(get, 0));
 	destroy_env();
 	clear_error_buffer();
 	return (exit_code(get, 0));

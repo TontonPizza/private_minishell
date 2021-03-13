@@ -12,14 +12,14 @@
 
 #include "../../headers/minishell.h"
 
-void	custom_msg_exit_code(int code)
-{
-	if (code == 214)
-		write(g_new_stdout, " trop d'arguments", 17);
-	if (code == 131 && get_quit_flag(get, 0) == 1)
-		write(g_new_stdout, " (core dumped)", 14);
-	write(g_new_stdout, "\n", 1);
-}
+//void	custom_msg_exit_code(int code)
+//{
+//	if (code == 214)
+//		write(g_new_stdout, " trop d'arguments", 17);
+//	if (code == 131 && get_quit_flag(get, 0) == 1)
+//		write(g_new_stdout, " (core dumped)", 14);
+//	write(g_new_stdout, "\n", 1);
+//}
 
 int	get_pid(int op, int val)
 {
@@ -55,5 +55,5 @@ void	sighandler_quit(int signum)
 	}
 	(void)signum;
 	get_quit_flag(set, 1);
-	exit_code(set, 131);
+	last_return_code(set, 131);
 }

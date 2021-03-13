@@ -30,13 +30,36 @@ int 	put_in_range(int i)
 	return (i);
 }
 
+int 	is_full_digit(char *word)
+{
+	int		i;
+
+	i = 0;
+	while (word[i])
+	{
+		if (ft_isdigit(word[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int 	builtin_exit(char **cmd)
 {
-	if (last_pipe(get, 0) == FALSE)
+	if (cmd[1] && is_full_digit(cmd[1]) == 0)
 	{
 		free_split(cmd);
+		get_quit_flag(set, 3);
 		return (0);
 	}
+	if (split_size(cmd) > 2)
+	{
+		free_split(cmd);
+		get_quit_flag(set, 2);
+		return (0);
+	}
+	if (last_pipe(get, 0) == FALSE && (free_split(cmd) * 0 + 1))
+		return (0);
 	if (cmd[1] != 0)
 	{
 		if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
@@ -46,8 +69,5 @@ int 	builtin_exit(char **cmd)
 	}
 	else
 		exit_code(set, last_return_code(get, 0));
-	if (cmd[0] && cmd[1] && cmd[2])
-		exit_code(set, 214);
-	free_split(cmd);
 	return (0);
 }

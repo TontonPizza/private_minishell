@@ -21,13 +21,10 @@ void 	write_with_double_quotes(char *word)
 		ft_putchar_fd(word[i++], 1);
 	if (word[i] == '=')
 		ft_putchar_fd(word[i++], 1);
-	if (word[i])
-	{
-		ft_putchar_fd('"', 1);
-		while (word[i])
-			ft_putchar_fd(word[i++], 1);
-		ft_putchar_fd('"', 1);
-	}
+	ft_putchar_fd('"', 1);
+	while (word[i])
+		ft_putchar_fd(word[i++], 1);
+	ft_putchar_fd('"', 1);
 	ft_putchar_fd('\n', 1);
 }
 

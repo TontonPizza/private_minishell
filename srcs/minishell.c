@@ -23,7 +23,7 @@ void	routine(char *line)
 	words = fix_words(words);
 	g_new_stdout = dup(1);
 	get_pid(set, -1);
-	while (words)
+	while (words && exit_code(get, 0) < 0)
 	{
 		list = 0;
 		last_pipe(set, FALSE);

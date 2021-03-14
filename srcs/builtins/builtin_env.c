@@ -12,6 +12,25 @@
 
 #include "../../headers/minishell.h"
 
+void 	write_with_double_quotes(char *word)
+{
+	int		i;
+
+	i = 0;
+	while (word[i] && word[i] != '=')
+		ft_putchar_fd(word[i++], 1);
+	if (word[i] == '=')
+		ft_putchar_fd(word[i++], 1);
+	if (word[i])
+	{
+		ft_putchar_fd('"', 1);
+		while (word[i])
+			ft_putchar_fd(word[i++], 1);
+		ft_putchar_fd('"', 1);
+	}
+	ft_putchar_fd('\n', 1);
+}
+
 int 	builtin_env(char **cmd)
 {
 	char	**env_array;

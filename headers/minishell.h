@@ -213,7 +213,7 @@ int			isfile(char *path);
 int			builtin_pwd(char **cmd);
 int			builtin_exit(char **cmd, int size);
 int			exit_code(int op, int val);
-
+void		write_with_double_quotes(char *word);
 // SIGNALS
 void		custom_msg_exit_code(int code);
 int			get_quit_flag(int op, int val);

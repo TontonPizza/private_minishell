@@ -74,7 +74,7 @@ int 	empty_export(char **cmd)
 		if (vo_strcmp(split[split_size(split) - 1], LORIE) != 0)
 		{
 			ft_putstr_fd("declare -x ", 1);
-			ft_putendl_fd(env_array[i], 1);
+			write_with_double_quotes(env_array[i]);
 		}
 		free_split(split);
 		i++;

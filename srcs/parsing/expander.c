@@ -61,8 +61,8 @@ char 	*expand_env_variable(char *word, int *cursor)
 		return (get_argv(hashtag, 0, 0));
 	if (word[*cursor] == '$' && ((*cursor)++ || 1))
 		return (ft_strdup("3950"));
-	if (word[*cursor] == '\'' || word[*cursor] == '"' && ((*cursor)++ || 1))  ///  ATTENTION DANGER
-		return (ft_strdup(""));											 ////
+	if (word[*cursor] == '\'' || word[*cursor] == '"' && ((*cursor)++ || 1))
+		return (ft_strdup(""));
 	while (ft_isalpha(word[*cursor]))
 	{
 		first = 1;

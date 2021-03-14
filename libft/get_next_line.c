@@ -96,6 +96,8 @@ int				init_and_error(int fd, char **line, char *buffer)
 	return (0);
 }
 
+
+
 int				get_next_line(int fd, char **l)
 {
 	static char		remains[256][BUFFER_SIZE + 2];

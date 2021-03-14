@@ -33,7 +33,7 @@ int	get_pid(int op, int val)
 void	sighandler_int(int signum)
 {
 	last_return_code(set, 128 + signum);
-	write(0, "\n", 1);
+	write(1, "\n", 1);
 	write_prompt();
 }
 

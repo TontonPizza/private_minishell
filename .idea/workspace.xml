@@ -17,7 +17,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f7591a6f-2ef6-4b92-898e-b984b4d90297" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/srcs/builtins/builtin_doge.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/minishell" beforeDir="false" afterPath="$PROJECT_DIR$/minishell" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/srcs/error_buffer/error_buffer_2.c" beforeDir="false" afterPath="$PROJECT_DIR$/srcs/error_buffer/error_buffer_2.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +139,7 @@
       <workItem from="1615703915730" duration="704000" />
       <workItem from="1615704971496" duration="279000" />
       <workItem from="1615711984077" duration="3312000" />
-      <workItem from="1615818316757" duration="4110000" />
+      <workItem from="1615818316757" duration="5041000" />
     </task>
     <servers />
   </component>

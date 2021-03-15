@@ -22,7 +22,7 @@ char	**get_env_as_array(void)
 	current = get_meta_data(0)->env_list;
 	free_split(get_meta_data(0)->all_env_as_array);
 	get_meta_data(0)->all_env_as_array
-	= malloc(sizeof (char *) * env_var_count() + 1);
+	= x_malloc(sizeof (char *) * (env_var_count() + 2));
 	if (get_meta_data(0)->all_env_as_array == 0)
 		return (0);
 	while (current)

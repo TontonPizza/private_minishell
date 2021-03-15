@@ -92,10 +92,11 @@ int	main(int argc, char **argv, char **envp)
 			break ;
 		write_prompt();
 	}
-//	free(line);
 	write(g_new_stdout, "exit", 5);
 	if (get_quit_flag(get, 3))
 		ft_putstr_fd(" : non numerical argument\n", g_new_stdout);
+	else
+		ft_putchar_fd('\n', g_new_stdout);
 	destroy_env();
 	clear_error_buffer();
 	return (exit_code(get, 0));

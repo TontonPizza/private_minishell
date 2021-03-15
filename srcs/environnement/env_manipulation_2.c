@@ -30,7 +30,7 @@ t_env_data	*get_meta_data(int first_call)
 	if (first_call == -1)
 	{
 		free_split(metadata.all_env_as_array);
-		free(metadata.requested_env_var);
+		get_meta_data(60);
 		destroy_env_list(&(metadata.env_list));
 		return (0);
 	}
@@ -42,6 +42,11 @@ t_env_data	*get_meta_data(int first_call)
 		metadata.env_list->next = 0;
 		metadata.requested_env_var = 0;
 		metadata.all_env_as_array = ft_split("yolo yolo", ' ');
+	}
+	if (first_call == 60 && metadata.requested_env_var != 0)
+	{
+		free(metadata.requested_env_var);
+		metadata.requested_env_var = 0;
 	}
 	return (&metadata);
 }

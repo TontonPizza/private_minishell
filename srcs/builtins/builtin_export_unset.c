@@ -51,8 +51,7 @@ int 	export_word(char *word)
 		var = (get_value_and_free_or_not(name, NO_FREE));
 		i++;
 	}
-	i++;
-	if (word[i])
+	if (word[i] && ++i)
 		var = ft_strjoin_and_free(var, word + i);
 	export_var(name, var);
 	free(name);

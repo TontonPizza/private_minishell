@@ -44,7 +44,7 @@ char	*get_value_and_free_or_not(char *name, int free_name)
 {
 	t_env_var	*current;
 
-	free_if_not_null(get_meta_data(0)->requested_env_var);
+	get_meta_data(60);
 	current = get_meta_data(0)->env_list;
 	while (current->next && ft_strncmp(current->name, name, ft_strlen(name)) != 0)
 		current = current->next;
@@ -55,7 +55,7 @@ char	*get_value_and_free_or_not(char *name, int free_name)
 			free(name);
 		if (vo_strcmp(get_meta_data(0)->requested_env_var, LORIE) == 0)
 		{
-			free(get_meta_data(0)->requested_env_var);
+			get_meta_data(60);
 			return (ft_strdup(""));
 		}
 		return (get_meta_data(0)->requested_env_var);

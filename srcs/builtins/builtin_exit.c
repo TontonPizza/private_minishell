@@ -61,7 +61,9 @@ int 	builtin_exit(char **cmd, int size)
 	}
 	else if (size > 1)
 	{
-		if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
+		if (ft_strlen(cmd[1]) > 8)
+			exit_code(set, 1);
+		else if (ft_atoi(cmd[1]) < 0 || ft_atoi(cmd[1]) > 255)
 			exit_code(set, put_in_range(ft_atoi(cmd[1])));
 		else
 			exit_code(set, ft_atoi(cmd[1]));

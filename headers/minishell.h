@@ -132,7 +132,6 @@ typedef struct s_env_data
 //int		g_new_stderr;
 //int		g_new_stdin;
 int			g_new_stdout;
-int 		g_exit_code;
 
 int			g_out(int op, int val);
 int			g_in(int op, int val);

@@ -12,7 +12,6 @@
 
 #include "../../headers/minishell.h"
 
-
 int	destroy_env_list(t_env_var **item)
 {
 	if (*item == NULL)

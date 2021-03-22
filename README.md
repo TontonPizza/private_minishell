@@ -1,4 +1,6 @@
-![Final Grade](https://github.com/TontonPizza/minishell_pour_tous/blob/master/100.png) # minishell 
+![Final Grade](https://github.com/TontonPizza/minishell_pour_tous/blob/master/100.png)
+
+# minishell 
 ### Aussi mignon qu'un vrai shell
 
 ### Projet 42

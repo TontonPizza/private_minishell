@@ -9,7 +9,10 @@
   - Analyse syntaxique
   - Expansion des paramètres et variable d'environnement
   - Tokenisation
+
 - Utilisation des forks pour créer des processus enfants
+
 - Utilisation des pipes pour la communication entre les processus
+
 
 
